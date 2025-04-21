@@ -276,7 +276,7 @@ function App() {
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                   I'm a passionate Frontend Developer with{" "}
-                  {calculateExperience()} years of experience specializing in{" "}
+                  {calculateExperience()} of experience specializing in{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">
                     React.js
                   </span>
