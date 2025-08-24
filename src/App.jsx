@@ -15,7 +15,8 @@ import ContactForm from "./components/ContactForm";
 import ProjectCard from "./components/ProjectCard";
 import { calculateExperience } from "./utils";
 import Typed from "typed.js";
-import Resume from "./assets/Resume.pdf";
+// import Resume from "./assets/Resume.pdf";
+import Ramesh from './assets/Ramesh.pdf';
 import home from "./assets/projects/home.png";
 import r4paws from "./assets/projects/r4paws.png";
 import nirmaltoys from "./assets/projects/nirmaltoys.png";
@@ -23,10 +24,11 @@ import appc from "./assets/projects/appc.png";
 import sathwik from "./assets/projects/sathwik.png";
 import votehaq from "./assets/projects/votehaq.png";
 import aboutmeImg from "./assets/aboutme.avif";
-import bgImg from "./assets/bgImg.avif";
+import images1 from "./assets/projects/images1.jpg";
 import home2 from "./assets/home2.png";
 // import portfolio from "./assets/portfolio.jpg";
 import portfolio from "./assets/portfolio.jpg";
+
 
 
 function App() {
@@ -125,8 +127,8 @@ function App() {
                   </a>
                 ))}
                 <a
-                  href={Resume} // Replace with your actual resume path
-                  download="Ramesh_Soppari_Resume.pdf"
+                  href={Ramesh} // Replace with your actual resume path
+                  download="Ramesh.pdf"
                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                 >
                   Download Resume
@@ -162,8 +164,8 @@ function App() {
                   </a>
                 ))}
                 <a
-                  href={Resume}
-                  download="Srinivasulu_Soppari_Resume.p"
+                  href={Ramesh}
+                  download="Ramesh_Soppari_Resume.p"
                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -262,12 +264,22 @@ function App() {
           <div className="container mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative group">
-                <img
+                {/* <img
                   //src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072"
-                  src={bgImg}
+                  src={images1}
                   alt="Developer working"
                   className="rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-[1.02]"
-                />
+                /> */}
+<img
+  src={images1}
+  alt="Developer working"
+  className="w-4/5 h-4/5 object-cover rounded-full shadow-xl transition-transform duration-300 group-hover:scale-[1.05]"
+/>
+
+
+
+
+
                 <div
                   className="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-600/10 dark:bg-blue-400/10 rounded-2xl -z-10 
                       transition-transform duration-300 group-hover:scale-[1.1]"
