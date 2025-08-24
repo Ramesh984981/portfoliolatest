@@ -15,15 +15,19 @@ import ContactForm from "./components/ContactForm";
 import ProjectCard from "./components/ProjectCard";
 import { calculateExperience } from "./utils";
 import Typed from "typed.js";
-import Resume from "./assets/SrinivasuluSoppariResume.pdf";
+import Resume from "./assets/Resume.pdf";
+import home from "./assets/projects/home.png";
+import r4paws from "./assets/projects/r4paws.png";
+import nirmaltoys from "./assets/projects/nirmaltoys.png";
+import appc from "./assets/projects/appc.png";
+import sathwik from "./assets/projects/sathwik.png";
+import votehaq from "./assets/projects/votehaq.png";
 import aboutmeImg from "./assets/aboutme.avif";
 import bgImg from "./assets/bgImg.avif";
-import netflix from './assets/projects/netflix.png';
-import youtube from './assets/projects/youtube.png';
-import foodvilla from './assets/projects/foodvilla.png';
-import devtinder from './assets/projects/devtinder.png';
-import blogapp from './assets/projects/blogapp.png';
-import worldnews from './assets/projects/worldnews.png';
+import home2 from "./assets/home2.png";
+// import portfolio from "./assets/portfolio.jpg";
+import portfolio from "./assets/portfolio.jpg";
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -61,7 +65,7 @@ function App() {
     useEffect(() => {
       const typed = new Typed(el.current, {
         strings: [
-          "Srinivasulu Soppari",
+          "Soppari Ramesh",
           "Frontend Developer",
           "React.js Developer",
           "MERN Stack",
@@ -96,9 +100,9 @@ function App() {
             <div className="flex justify-between items-center">
               <a
                 href="#"
-                className="text-3xl font-bold text-blue-600 dark:text-blue-400 hover:scale-105 transition-transform font-logo"
+                className="text-3xl font-bold text-blue-600 dark:text-black-400 hover:scale-105 transition-transform font-logo"
               >
-                Srinivasulu Soppari
+                 Soppari Ramesh
               </a>
 
               {/* Mobile Menu Button */}
@@ -122,7 +126,7 @@ function App() {
                 ))}
                 <a
                   href={Resume} // Replace with your actual resume path
-                  download="Srinivasulu_Soppari_Resume.pdf"
+                  download="Ramesh_Soppari_Resume.pdf"
                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                 >
                   Download Resume
@@ -190,14 +194,14 @@ function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
             <img
               // src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=2070"
-              src={bgImg}
+              src={portfolio}
               alt="Background"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl animate-float">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-slide-up">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-black mb-6 animate-slide-up">
                 Hi, I'm
                 <br /> <TypingAnimation />
               </h1>
@@ -219,7 +223,7 @@ function App() {
                 style={{ animationDelay: "0.6s" }}
               >
                 <a
-                  href="https://github.com/srinu766"
+                  href="https://github.com/Ramesh984981"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
@@ -228,7 +232,7 @@ function App() {
                   <Github className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/srinu-soppari"
+                  href="https://www.linkedin.com/in/soppari-ramesh/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
@@ -237,7 +241,7 @@ function App() {
                   <Linkedin className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://wa.me/916300162929"
+                  href="https://wa.me/9849819020"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 
@@ -260,7 +264,7 @@ function App() {
               <div className="relative group">
                 <img
                   //src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072"
-                  src={aboutmeImg}
+                  src={bgImg}
                   alt="Developer working"
                   className="rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-[1.02]"
                 />
@@ -472,182 +476,95 @@ function App() {
           </div>
         </section>
 
-        {/* Experience Section */}
-        <section
-          id="experience"
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
-        >
-          <div className="container mx-auto">
-            <h2 className="section-title pb-4">Work Experience</h2>
-            <div className="max-w-4xl mx-auto space-y-8">
-              {/* Main Experience Card */}
-              <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <div className="absolute top-0 left-0 w-2 h-full bg-blue-600 dark:bg-blue-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
-                <div className="flex flex-col md:flex-row justify-between">
-                  <div className="md:w-2/3">
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Frontend Developer
-                    </h3>
-                    <p className="text-blue-600 dark:text-blue-400 mb-4 font-medium">
-                      Druvo software solutions
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">
-                      Developed comprehensive HRM, CRM, and ERP solutions that
-                      transformed business operations through automation and
-                      intelligent features.
-                    </p>
-                  </div>
-                  <div className="md:w-1/3 flex items-start justify-end">
-                    <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-full">
-                      Full-time
-                    </span>
-                  </div>
-                </div>
+{/* Experience Section */}
+<section
+  id="experience"
+  className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
+>
+  <div className="container mx-auto">
+    {/* Section Title */}
+    <h2 className="section-title pb-8 text-center">Work Experience</h2>
 
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                  {/* HRM Project */}
-                  <div className="bg-white dark:bg-gray-700 p-5 rounded-xl border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex items-center mb-3">
-                      <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg mr-3">
-                        <svg
-                          className="w-5 h-5 text-blue-600 dark:text-blue-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                          />
-                        </svg>
-                      </div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
-                        HRM System
-                      </h4>
-                    </div>
-                    <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-1">•</span>
-                        Payroll & Compensation automation
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-1">•</span>
-                        Interview Scheduling
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-1">•</span>
-                        Leave Management
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-1">•</span>
-                        Employee Attendance Tracking
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-1">•</span>
-                        Performance Analytics
-                      </li>
-                    </ul>
-                  </div>
+    {/* Company Overview */}
+    <div className="mt-12 text-center">
+      <p className="text-purple-600 dark:text-purple-400 font-bold mb-2">
+        NextPage Technologies • Feb 26, 2024 – Present
+      </p>
+      <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Contributing to scalable web applications and enterprise-grade solutions
+        using the MERN stack with a focus on performance and clean architecture.
+      </p>
+    </div>
 
-                  {/* CRM Project */}
-                  <div className="bg-white dark:bg-gray-700 p-5 rounded-xl border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex items-center mb-3">
-                      <div className="p-2 bg-green-100 dark:bg-green-900/50 rounded-lg mr-3">
-                        <svg
-                          className="w-5 h-5 text-green-600 dark:text-green-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                          />
-                        </svg>
-                      </div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
-                        CRM System
-                      </h4>
-                    </div>
-                    <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                      <li className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-1">•</span>
-                        Lead Progression & Management
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-1">•</span>
-                        Visit Tracking & Travel Reimbursement
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-1">•</span>
-                        Sales & Service Tracking
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-1">•</span>
-                        Insights & Performance Analytics
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-1">•</span>
-                        Customer Relationship Management
-                      </li>
-                    </ul>
-                  </div>
+    {/* Experience Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+      {/* SafeFood Project */}
+      <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+        <div className="absolute top-0 left-0 w-2 h-full bg-red-600 dark:bg-red-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
+       <h3 className="text-2xl font-semibold text-blue-600 dark:text-white mb-2">
+  SafeFood Project
+</h3>
 
-                  {/* ERP Project */}
-                  <div className="bg-white dark:bg-gray-700 p-5 rounded-xl border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex items-center mb-3">
-                      <div className="p-2 bg-purple-100 dark:bg-purple-900/50 rounded-lg mr-3">
-                        <svg
-                          className="w-5 h-5 text-purple-600 dark:text-purple-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                          />
-                        </svg>
-                      </div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
-                        ERP System
-                      </h4>
-                    </div>
-                    <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                      <li className="flex items-start">
-                        <span className="text-purple-500 mr-2 mt-1">•</span>
-                        Integrated Business Process Management
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-500 mr-2 mt-1">•</span>
-                        Real-time Data Analytics
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-500 mr-2 mt-1">•</span>
-                        Inventory & Supply Chain Management
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-500 mr-2 mt-1">•</span>
-                        Financial Management
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-500 mr-2 mt-1">•</span>
-                        Cross-department Collaboration
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+     
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
+          Developed a comprehensive food safety reporting platform using Next.js
+          and React.js, enabling users to report unsafe food products and access
+          real-time updates.
+        </p>
+        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
+          <li>• Implemented SSR with Next.js for SEO optimization.</li>
+          <li>• Built scalable backend API with Node.js & Express.js.</li>
+          <li>• Integrated MongoDB for reports & location-based data.</li>
+          <li>• Added WebSocket notifications for instant updates.</li>
+        </ul>
+      </div>
+
+      {/* Biksouq Project */}
+      <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+        <div className="absolute top-0 left-0 w-2 h-full bg-blue-600 dark:bg-blue-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
+ <h3 className="text-2xl font-semibold text-blue-600 mb-2">
+  Biksouq Project
+</h3>
+
+
+  
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
+          Built and maintained Biksouq Business Directory platform, simplifying
+          business networking and global connections.
+        </p>
+        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
+          <li>• Developed with Next.js, Node.js, Express, and MySQL.</li>
+          <li>• Built responsive UI with Bootstrap.</li>
+          <li>• Implemented secure authentication and search features.</li>
+        </ul>
+      </div>
+
+      {/* R4 Paws Project */}
+      <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+        <div className="absolute top-0 left-0 w-2 h-full bg-green-600 dark:bg-green-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
+  <h3 className="text-2xl font-semibold text-blue-600 dark:text-white mb-2">
+  R4 Paws Project
+</h3>
+
+       
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
+          Developed pet care platform to connect pet owners with veterinary
+          services, adoption centers, and product listings.
+        </p>
+        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
+          <li>• Built with React, Next.js, and Tailwind CSS.</li>
+          <li>• Integrated veterinary service modules and adoption listings.</li>
+          <li>• Delivered responsive design for seamless user experience.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
         {/* Projects Section */}
         <section
@@ -657,156 +574,104 @@ function App() {
           <div className="container mx-auto">
             <h2 className="section-title pb-4">Featured Projects</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <ProjectCard
-                title="Netflix-GPT"
-                description="A Netflix clone with GPT-powered search, Firebase authentication, and TMDB API integration"
-                // image="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&q=80&w=1969"
-                image={netflix}
-                link="https://github.com/srinu766/netflix-gpt"
-                tags={["React", "Firebase", "GPT API", "TMDB API"]}
-              />
-              <ProjectCard
-                title="Video Streaming App"
-                description="YouTube-inspired streaming platform with live chat and intelligent search functionality"
-                // image="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1974"
-                image={youtube}
-                link="https://github.com/srinu766/video_streaming_app"
-                tags={["React", "YouTube API", "WebSocket", "Redux"]}
-              />
-              <ProjectCard
-                title="Food Villa"
-                description="Food delivery SPA with Redux Toolkit state management and Shimmer UI loading states"
-                // image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070"
-                image={foodvilla}
-                link="https://github.com/srinu766/FoodVilla"
-                tags={["React", "Redux Toolkit", "Tailwind CSS"]}
-              />
+           <ProjectCard
+  title="Biksouq"
+  description="Biksouq Business Directory is a comprehensive platform connecting businesses globally. It simplifies networking and ensures seamless business growth."
+  image={home}
+  link="https://biksouq.com"
+  tags={["Next.js", "Node.js", "MySQL", "Express", "Bootstrap"]}
+/>
 
-              <ProjectCard
-                title="Dev Tinder"
-                description="A Tinder-like platform for developers to connect, collaborate, and find coding partners. Features swipe-based matching, real-time chat, and GitHub integration."
-                // image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                image={devtinder}
-                link="https://github.com/srinu766/DevTinderWeb"
-                tags={[
-                  "React",
-                  "Redux Toolkit",
-                  "Tailwind CSS",
-                  "Node.js",
-                  "Express.js",
-                  "MongoDB",
-                  "Socket.IO",
-                  "OAuth",
-                ]}
-              />
-              <ProjectCard
-                title="Blog App"
-                description="Food delivery SPA with Redux Toolkit state management and Shimmer UI loading states"
-                // image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070"
-                image={blogapp}
-                link="https://github.com/srinu766/next-blog-app"
-                tags={["Next.js", "Redux Toolkit", "Tailwind CSS", "mongoDB"]}
-              />
-              <ProjectCard
-                title="worldnews.net"
-                description="Food delivery SPA with Redux Toolkit state management and Shimmer UI loading states"
-                // image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070"
-                image={worldnews}
-                link="https://github.com/srinu766/worldnews.net"
-                tags={["React.js", "html", "css"]}
-              />
+            <ProjectCard
+  title="R4 Paws"
+  description="R4 Paws is a pet care platform that connects pet owners with veterinary services, adoption centers, and pet care products for a healthier and happier life."
+  image={r4paws}
+  link="https://r4paws.com"
+  tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+/>
+
+           <ProjectCard
+  title="Nirmal Toys & Crafts"
+  description="Nirmal Toys & Crafts is a creative platform showcasing handcrafted toys and artistic crafts, preserving traditional artistry while promoting online sales."
+  image={nirmaltoys}
+  link="https://nirmaltoys.com"
+  tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+/>
+
+<ProjectCard
+  title="Appc"
+  description="A comprehensive platform for managing applications and streamlining workflows with a user-friendly interface and responsive design."
+  image={appc}
+  link="https://appc.in"
+  tags={["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]}
+/>
+
+<ProjectCard
+  title="Sathwik.org"
+  description="A personal or organizational website designed to showcase projects, blogs, and updates with an interactive and modern UI."
+image={sathwik}
+  link="https://sathwik.org"
+  tags={["Next.js", "React", "Tailwind CSS", "Framer Motion"]}
+/>
+
+<ProjectCard
+  title="Votehaq"
+  description="Votehaq is a secure and user-friendly voting platform designed to make online elections simple, transparent, and reliable for organizations and institutions."
+image={votehaq}
+  link="https://votehaq.com"
+  tags={["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"]}
+/>
             </div>
           </div>
         </section>
 
         {/* Education & Certifications */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-          <div className="container mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-                  Education
-                </h2>
-                <div className="space-y-8 relative pl-6 border-l-2 border-blue-600 dark:border-blue-400">
-                  <div className="relative">
-                    <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                      B.Tech in Computer Science
-                    </h3>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
-                      Sree Dattha Institute of Technology and Science
-                    </p>
-                    <p className="text-blue-600 dark:text-blue-400">
-                      2019 - 2022
-                    </p>
-                  </div>
-
-                  <div className="relative">
-                    <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Diploma in Computer Science
-                    </h3>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
-                      Gayathri Politechnic College
-                    </p>
-                    <p className="text-blue-600 dark:text-blue-400">
-                      2016 - 2019
-                    </p>
-                  </div>
-
-                  <div className="relative">
-                    <div className="absolute w-4 h-4  rounded-full -left-[9px] top-0" />
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Secondary School (10th)
-                    </h3>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
-                      TS Model School
-                    </p>
-                    <p className="text-blue-600 dark:text-blue-400">
-                      2015 - 2016
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-                  Certifications
-                </h2>
-                <div className="space-y-6">
-                  <div className="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Namaste React
-                    </h3>
-                    <a
-                      href="https://namastedev.com/srinusoppari6766/certificates/namaste-react"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline group"
-                    >
-                      View Certificate{" "}
-                      <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </div>
-                  <div className="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Node.js Development
-                    </h3>
-                    <a
-                      href="https://namastedev.com/srinusoppari6766/certificates/namaste-node"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline group"
-                    >
-                      View Certificate{" "}
-                      <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+  <div className="container mx-auto">
+    <div className="flex justify-center">
+      <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 max-w-xl w-full">
+        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+          Education
+        </h2>
+        <div className="space-y-8 relative pl-6 border-l-2 border-blue-600 dark:border-blue-400">
+          <div className="relative">
+            <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+              BSC in Computer Science
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              WCCM Degree College (8.73)
+            </p>
+            <p className="text-blue-600 dark:text-blue-400">2017 - 2020</p>
           </div>
-        </section>
+
+          <div className="relative">
+            <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+              MPC
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Sri Thriveni Junior College (7.04)
+            </p>
+            <p className="text-blue-600 dark:text-blue-400">2014 - 2016</p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+              Secondary School (10th)
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              APRS School
+            </p>
+            <p className="text-blue-600 dark:text-blue-400">2013 - 2014</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Contact Section */}
         <section
@@ -840,11 +705,11 @@ function App() {
                         Email
                       </h4>
                       <a
-                        href="mailto:srinivasulusoppari777@gmail.com"
+                        href="mailto:sopparir940@gmail.com"
                         className="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         <span className="">
-                          srinivasulusoppari777@gmail.com
+                          sopparir940@gmail.com
                         </span>
                       </a>
                     </div>
@@ -858,10 +723,10 @@ function App() {
                         Phone
                       </h4>
                       <a
-                        href="tel:+916300162929"
+                        href="tel:+919849819020"
                         className="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
-                        +91 6300162929
+                        +91 9849819020
                       </a>
                     </div>
                   </div>
@@ -872,7 +737,7 @@ function App() {
                     </h4>
                     <div className="flex gap-4">
                       <a
-                        href="https://github.com/srinu766"
+                        href="https://github.com/Ramesh984981"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
@@ -893,7 +758,7 @@ function App() {
                       </a>
 
                       <a
-                        href="https://www.linkedin.com/in/srinu-soppari/"
+                        href="https://www.linkedin.com/in/soppari-ramesh/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
@@ -909,25 +774,10 @@ function App() {
                         </svg>
                       </a>
 
-                      <a
-                        href="https://x.com/SoppariSrinu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
-                        aria-label="Twitter profile"
-                      >
-                        <svg
-                          className="w-5 h-5 text-gray-700 dark:text-gray-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                        </svg>
-                      </a>
+                    
 
                       <a
-                        href="https://www.instagram.com/srinu_1799/"
+                        href="https://www.instagram.com/soppari_Ramesh/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"

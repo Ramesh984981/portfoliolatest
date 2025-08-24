@@ -6,6 +6,9 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
+.nav-link{
+  color: #fff !important;
+}
 
 @layer base {
   body {
