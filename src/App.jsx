@@ -274,53 +274,111 @@ function App() {
 
   {/* Content Section */}
   <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
-    {/* Left Side: Text Content */}
+    {/* Left Side: Text + Social Links */}
     <div className="backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl shadow-xl">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+      {/* Heading */}
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-slide-up">
         Hi, I'm <br />
         <span className="text-black dark:text-white">
           <TypingAnimation />
         </span>
       </h1>
+
+      {/* Subheading */}
       <h2
-        className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6"
+        className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6 animate-slide-up"
         style={{ animationDelay: "0.2s" }}
       >
         Frontend Developer - ReactJS
       </h2>
+
+      {/* Short Description */}
       <p
-        className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8"
+        className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 animate-slide-up"
         style={{ animationDelay: "0.4s" }}
       >
-        As a passionate Frontend Developer, I build fast, dynamic, and visually stunning web applications. 
-        With expertise in ReactJS and modern web technologies, I focus on creating seamless, user-friendly digital experiences.
+        Passionate frontend developer crafting beautiful and performant web experiences.
+        I build fast, dynamic, and visually stunning web applications using ReactJS and modern technologies.
       </p>
+
+      {/* Social Links */}
+      <div
+        className="flex space-x-4 animate-slide-up"
+        style={{ animationDelay: "0.6s" }}
+      >
+        <a
+          href="https://github.com/Ramesh984981"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
+          dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+        >
+          <Github className="w-6 h-6" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/soppari-ramesh/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
+          dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+        >
+          <Linkedin className="w-6 h-6" />
+        </a>
+        <a
+          href="https://wa.me/9849819020"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 
+          dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110"
+        >
+          <FaWhatsapp className="w-6 h-6" />
+        </a>
+      </div>
     </div>
 
     {/* Right Side: Profile Image */}
     <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto animate-float">
-  <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-gray-600 shadow-2xl overflow-hidden">
-    <img
-      src={images1}
-      alt="Profile"
-      className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
-    />
+      <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-gray-600 shadow-2xl overflow-hidden">
+        <img
+          src={images1}
+          alt="Profile"
+          className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+    </div>
   </div>
-</div>
 
-  </div>
-
-  {/* Animations - Place at the END of the Section */}
+  {/* Animations */}
   <style jsx>{`
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
     }
     .animate-float {
       animation: float 3s ease-in-out infinite;
     }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-up {
+      opacity: 0;
+      animation: slideUp 0.8s ease forwards;
+    }
   `}</style>
 </section>
+
 
 
 
