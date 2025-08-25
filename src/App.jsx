@@ -299,14 +299,15 @@ function App() {
 
     {/* Right Side: Profile Image */}
     <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto animate-float">
-      <div className="relative w-full h-full rounded-full border-6 border-white dark:border-gray-600 shadow-2xl overflow-hidden">
-        <img
-          src={images1}
-          alt="Profile"
-          className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
-        />
-      </div>
-    </div>
+  <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-gray-600 shadow-2xl overflow-hidden">
+    <img
+      src={images1}
+      alt="Profile"
+      className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+    />
+  </div>
+</div>
+
   </div>
 
   {/* Animations - Place at the END of the Section */}
@@ -665,7 +666,7 @@ function App() {
   title="Nirmal Toys & Crafts"
   description="Nirmal Toys & Crafts is a creative platform showcasing handcrafted toys and artistic crafts, preserving traditional artistry while promoting online sales."
   image={nirmaltoys}
-  link="https://nirmaltoys.com"
+  link="https://nirmaltoycrafts.com/"
   tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
 />
 
