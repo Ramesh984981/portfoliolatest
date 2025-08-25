@@ -13,6 +13,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import ContactForm from "./components/ContactForm";
 import ProjectCard from "./components/ProjectCard";
+import aboutme from './assets/aboutme.avif';
 import { calculateExperience } from "./utils";
 import Typed from "typed.js";
 // import Resume from "./assets/Resume.pdf";
@@ -191,7 +192,7 @@ function App() {
         </nav>
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+        {/* <section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
             <img
@@ -203,10 +204,13 @@ function App() {
           </div>
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl animate-float">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-black mb-6 animate-slide-up">
-                Hi, I'm
-                <br /> <TypingAnimation />
-              </h1>
+<h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-6 animate-slide-up">
+  Hi, I'm
+  <br />
+ <span className="text-black">
+    <TypingAnimation />
+  </span>
+</h1>
               <h2
                 className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6 animate-slide-up"
                 style={{ animationDelay: "0.2s" }}
@@ -254,32 +258,87 @@ function App() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
+
+
+<section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+  {/* Background Section */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
+    <img
+      src={portfolio}
+      alt="Background"
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  {/* Content Section */}
+  <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+    {/* Left Side: Text Content */}
+    <div className="backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl shadow-xl">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Hi, I'm <br />
+        <span className="text-black dark:text-white">
+          <TypingAnimation />
+        </span>
+      </h1>
+      <h2
+        className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6"
+        style={{ animationDelay: "0.2s" }}
+      >
+        Frontend Developer - ReactJS
+      </h2>
+      <p
+        className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8"
+        style={{ animationDelay: "0.4s" }}
+      >
+        As a passionate Frontend Developer, I build fast, dynamic, and visually stunning web applications. 
+        With expertise in ReactJS and modern web technologies, I focus on creating seamless, user-friendly digital experiences.
+      </p>
+    </div>
+
+    {/* Right Side: Profile Image */}
+    <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto animate-float">
+      <div className="relative w-full h-full rounded-full border-6 border-white dark:border-gray-600 shadow-2xl overflow-hidden">
+        <img
+          src={images1}
+          alt="Profile"
+          className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+    </div>
+  </div>
+
+  {/* Animations - Place at the END of the Section */}
+  <style jsx>{`
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+  `}</style>
+</section>
+
+
+
+
 
         {/* About Section */}
-        <section
+          <section
           id="about"
           className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
         >
           <div className="container mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative group">
-                {/* <img
+                <img
                   //src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072"
-                  src={images1}
+                  src={aboutmeImg}
                   alt="Developer working"
                   className="rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-[1.02]"
-                /> */}
-<img
-  src={images1}
-  alt="Developer working"
-  className="w-4/5 h-4/5 object-cover rounded-full shadow-xl transition-transform duration-300 group-hover:scale-[1.05]"
-/>
-
-
-
-
-
+                />
                 <div
                   className="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-600/10 dark:bg-blue-400/10 rounded-2xl -z-10 
                       transition-transform duration-300 group-hover:scale-[1.1]"
