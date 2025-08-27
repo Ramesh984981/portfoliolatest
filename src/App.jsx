@@ -297,8 +297,8 @@ function App() {
         className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 animate-slide-up"
         style={{ animationDelay: "0.4s" }}
       >
-        Passionate frontend developer crafting beautiful and performant web experiences.
-        I build fast, dynamic, and visually stunning web applications using ReactJS and modern technologies.
+     Passionate Frontend Developer crafting beautiful and performant web experiences.
+⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, MySQL, and Git, along with other modern technologies.
       </p>
 
       {/* Social Links */}
