@@ -1,5 +1,956 @@
 
+// import { useState, useEffect, useRef } from "react";
+// import {
+//   Github,
+//   Linkedin,
+//   Mail,
+//   Phone,
+//   Moon,
+//   Sun,
+//   ExternalLink,
+//   Menu,
+//   X,
+// } from "lucide-react";
+// import { FaWhatsapp } from "react-icons/fa";
+// import ContactForm from "./components/ContactForm";
+// import ProjectCard from "./components/ProjectCard";
+// import aboutme from './assets/aboutme.avif';
+// import { calculateExperience } from "./utils";
+// import Typed from "typed.js";
+// // import Resume from "./assets/Resume.pdf";
+// import Ramesh from './assets/Ramesh.pdf';
+// import home from "./assets/projects/home.png";
+// import r4paws from "./assets/projects/r4paws.png";
+// import nirmaltoys from "./assets/projects/nirmaltoys.png";
+// import appc from "./assets/projects/appc.png";
+// import sathwik from "./assets/projects/sathwik.png";
+// import votehaq from "./assets/projects/votehaq.png";
+// import aboutmeImg from "./assets/aboutme.avif";
+// import images1 from "./assets/projects/images1.jpg";
+// import home2 from "./assets/home2.png";
+// // import portfolio from "./assets/portfolio.jpg";
+// import portfolio from "./assets/portfolio.jpg";
+
+
+
+// function App() {
+//   const [darkMode, setDarkMode] = useState(true);
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setScrolled(window.scrollY > 20);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   const toggleDarkMode = () => {
+//     setDarkMode(!darkMode);
+//   };
+
+//   const toggleMenu = () => {
+//     setIsMenuOpen(!isMenuOpen);
+//   };
+
+//   const navLinks = [
+//     { href: "#about", text: "About" },
+//     { href: "#skills", text: "Skills" },
+//     { href: "#experience", text: "Experience" },
+//     { href: "#projects", text: "Projects" },
+//     { href: "#contact", text: "Contact" },
+//   ];
+
+//   const TypingAnimation = () => {
+//     const el = useRef(null);
+
+//     useEffect(() => {
+//       const typed = new Typed(el.current, {
+//         strings: [
+//           "Soppari Ramesh",
+//           "Frontend Developer",
+//           "React.js Developer",
+//           "MERN Stack",
+//         ],
+//         typeSpeed: 200,
+//         backSpeed: 200,
+//         loop: true,
+//         showCursor: true,
+//         cursorChar: "|",
+//       });
+
+//       return () => {
+//         typed.destroy();
+//       };
+//     }, []);
+
+//     return <span ref={el} className="text-blue-600 dark:text-blue-400" />;
+//   };
+
+//   return (
+//     <div className={`${darkMode ? "dark bg-gray-900" : "bg-white"}`}>
+//       <div className="min-h-screen">
+//         {/* Navigation */}
+//         <nav
+//           className={`fixed w-full z-50 transition-all duration-300 ${
+//             scrolled
+//               ? "py-2 bg-white/90 dark:bg-gray-900/90 shadow-lg backdrop-blur-sm"
+//               : "py-4 bg-transparent"
+//           }`}
+//         >
+//           <div className="container mx-auto">
+//             <div className="flex justify-between items-center">
+//               <a
+//                 href="#"
+//                 className="text-3xl font-bold text-blue-600 dark:text-black-400 hover:scale-105 transition-transform font-logo"
+//               >
+//                  Soppari Ramesh
+//               </a>
+
+//               {/* Mobile Menu Button */}
+//               <button
+//                 onClick={toggleMenu}
+//                 className="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//               >
+//                 {isMenuOpen ? (
+//                   <X className="w-6 h-6" />
+//                 ) : (
+//                   <Menu className="w-6 h-6" />
+//                 )}
+//               </button>
+
+//               {/* Desktop Navigation */}
+//               <div className="hidden lg:flex items-center space-x-8">
+//                 {navLinks.map((link) => (
+//                   <a key={link.href} href={link.href} className="nav-link">
+//                     {link.text}
+//                   </a>
+//                 ))}
+//                 <a
+//                   href={Ramesh} // Replace with your actual resume path
+//                   download="Ramesh.pdf"
+//                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+//                 >
+//                   Download Resume
+//                 </a>
+//                 <button
+//                   onClick={toggleDarkMode}
+//                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                 >
+//                   {darkMode ? (
+//                     <Sun className="w-5 h-5 text-white" />
+//                   ) : (
+//                     <Moon className="w-5 h-5" />
+//                   )}
+//                 </button>
+//               </div>
+//             </div>
+
+//             {/* Mobile Navigation */}
+//             <div
+//               className={`lg:hidden absolute left-0 right-0 bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ease-in-out ${
+//                 isMenuOpen ? "max-h-96 py-4" : "max-h-0 overflow-hidden"
+//               }`}
+//             >
+//               <div className="flex flex-col space-y-4 px-6">
+//                 {navLinks.map((link) => (
+//                   <a
+//                     key={link.href}
+//                     href={link.href}
+//                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                     onClick={() => setIsMenuOpen(false)}
+//                   >
+//                     {link.text}
+//                   </a>
+//                 ))}
+//                 <a
+//                   href={Ramesh}
+//                   download="Ramesh_Soppari_Resume.p"
+//                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-center"
+//                   onClick={() => setIsMenuOpen(false)}
+//                 >
+//                   Download Resume
+//                 </a>
+//                 <button
+//                   onClick={toggleDarkMode}
+//                   className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                 >
+//                   {darkMode ? (
+//                     <>
+//                       <Sun className="w-5 h-5" /> Light Mode
+//                     </>
+//                   ) : (
+//                     <>
+//                       <Moon className="w-5 h-5" /> Dark Mode
+//                     </>
+//                   )}
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </nav>
+
+//         {/* Hero Section */}
+//         {/* <section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+//           <div className="absolute inset-0 z-0">
+//             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
+//             <img
+//               // src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=2070"
+//               src={portfolio}
+//               alt="Background"
+//               className="w-full h-full object-cover"
+//             />
+//           </div>
+//           <div className="container relative z-10">
+//             <div className="max-w-3xl mx-auto backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl animate-float">
+// <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-6 animate-slide-up">
+//   Hi, I'm
+//   <br />
+//  <span className="text-black">
+//     <TypingAnimation />
+//   </span>
+// </h1>
+//               <h2
+//                 className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6 animate-slide-up"
+//                 style={{ animationDelay: "0.2s" }}
+//               >
+//                 Frontend Developer - ReactJS
+//               </h2>
+//               <p
+//                 className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 animate-slide-up"
+//                 style={{ animationDelay: "0.4s" }}
+//               >
+//                 Passionate frontend developer crafting beautiful and performant
+//                 web experiences
+//               </p>
+//               <div
+//                 className="flex space-x-4 animate-slide-up"
+//                 style={{ animationDelay: "0.6s" }}
+//               >
+//                 <a
+//                   href="https://github.com/Ramesh984981"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
+//                            dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+//                 >
+//                   <Github className="w-6 h-6" />
+//                 </a>
+//                 <a
+//                   href="https://www.linkedin.com/in/soppari-ramesh/"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
+//                            dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+//                 >
+//                   <Linkedin className="w-6 h-6" />
+//                 </a>
+//                 <a
+//                   href="https://wa.me/9849819020"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 
+//              dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110"
+//                 >
+//                   <FaWhatsapp className="w-6 h-6" />
+//                 </a>
+//               </div>
+//             </div>
+//           </div>
+//         </section> */}
+
+
+// <section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+//   {/* Background Section */}
+//   <div className="absolute inset-0 z-0">
+//     <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
+//     <img
+//       src={portfolio}
+//       alt="Background"
+//       className="w-full h-full object-cover"
+//     />
+//   </div>
+
+//   {/* Content Section */}
+//   <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+//     {/* Left Side: Text + Social Links */}
+//     <div className="backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl shadow-xl">
+//       {/* Heading */}
+//       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-slide-up">
+//         Hi, I'm <br />
+//         <span className="text-black dark:text-white">
+//           <TypingAnimation />
+//         </span>
+//       </h1>
+
+//       {/* Subheading */}
+//       <h2
+//         className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6 animate-slide-up"
+//         style={{ animationDelay: "0.2s" }}
+//       >
+//         Frontend Developer - ReactJS
+//       </h2>
+
+//       {/* Short Description */}
+//       <p
+//         className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 animate-slide-up"
+//         style={{ animationDelay: "0.4s" }}
+//       >
+//      Passionate Frontend Developer crafting beautiful and performant web experiences.
+// ⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, MySQL, and Git, along with other modern technologies.
+//       </p>
+
+//       {/* Social Links */}
+//       <div
+//         className="flex space-x-4 animate-slide-up"
+//         style={{ animationDelay: "0.6s" }}
+//       >
+//         <a
+//           href="https://github.com/Ramesh984981"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
+//           dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+//         >
+//           <Github className="w-6 h-6" />
+//         </a>
+//         <a
+//           href="https://www.linkedin.com/in/soppari-ramesh/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
+//           dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+//         >
+//           <Linkedin className="w-6 h-6" />
+//         </a>
+//         <a
+//           href="https://wa.me/9849819020"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 
+//           dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110"
+//         >
+//           <FaWhatsapp className="w-6 h-6" />
+//         </a>
+//       </div>
+//     </div>
+
+//     {/* Right Side: Profile Image */}
+//     <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto animate-float">
+//       <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-gray-600 shadow-2xl overflow-hidden">
+//         <img
+//           src={images1}
+//           alt="Profile"
+//           className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+//         />
+//       </div>
+//     </div>
+//   </div>
+
+//   {/* Animations */}
+//   <style jsx>{`
+//     @keyframes float {
+//       0%, 100% {
+//         transform: translateY(0px);
+//       }
+//       50% {
+//         transform: translateY(-12px);
+//       }
+//     }
+//     .animate-float {
+//       animation: float 3s ease-in-out infinite;
+//     }
+
+//     @keyframes slideUp {
+//       from {
+//         opacity: 0;
+//         transform: translateY(20px);
+//       }
+//       to {
+//         opacity: 1;
+//         transform: translateY(0);
+//       }
+//     }
+//     .animate-slide-up {
+//       opacity: 0;
+//       animation: slideUp 0.8s ease forwards;
+//     }
+//   `}</style>
+// </section>
+
+
+
+
+
+
+//         {/* About Section */}
+//           <section
+//           id="about"
+//           className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
+//         >
+//           <div className="container mx-auto">
+//             <div className="grid md:grid-cols-2 gap-12 items-center">
+//               <div className="relative group">
+//                 <img
+//                   //src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072"
+//                   src={aboutmeImg}
+//                   alt="Developer working"
+//                   className="rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-[1.02]"
+//                 />
+//                 <div
+//                   className="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-600/10 dark:bg-blue-400/10 rounded-2xl -z-10 
+//                       transition-transform duration-300 group-hover:scale-[1.1]"
+//                 />
+//               </div>
+//               <div>
+//                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white relative mb-8 pb-4">
+//                   About Me
+//                   <span className="absolute bottom-0 left-0 w-16 h-1 bg-blue-600 dark:bg-blue-400"></span>
+//                 </h2>
+//                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+//                   I'm a passionate Frontend Developer with{" "}
+//                   {calculateExperience()} of experience specializing in{" "}
+//                   <span className="font-semibold text-blue-600 dark:text-blue-400">
+//                     React.js
+//                   </span>
+//                   ,{" "}
+//                   <span className="font-semibold text-blue-600 dark:text-blue-400">
+//                     Next.js
+//                   </span>
+//                   , and modern JavaScript ecosystems.
+//                 </p>
+
+//                 <div className="mb-6">
+//                   <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
+//                     Technical Skills
+//                   </h3>
+//                   <div className="flex flex-wrap gap-3">
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       React.js
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       Next.js
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       Redux
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       TypeScript
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       JavaScript
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       HTML5
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       CSS3
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       Tailwind CSS
+//                     </span>
+//                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
+//                       Git
+//                     </span>
+//                   </div>
+//                 </div>
+
+//                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+//                   I've successfully delivered projects ranging from dynamic
+//                   single-page applications to complex enterprise dashboards,
+//                   leveraging state management with{" "}
+//                   <span className="font-semibold text-blue-600 dark:text-blue-400">
+//                     Redux
+//                   </span>{" "}
+//                   and server-side rendering with{" "}
+//                   <span className="font-semibold text-blue-600 dark:text-blue-400">
+//                     Next.js
+//                   </span>
+//                   .
+//                 </p>
+
+//                 <p className="text-lg text-gray-600 dark:text-gray-300">
+//                   Committed to continuous learning, I stay current with industry
+//                   trends to implement cutting-edge solutions.
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Skills Section */}
+//         <section
+//           id="skills"
+//           className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative overflow-hidden"
+//         >
+//           <div className="absolute inset-0 opacity-10">
+//             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] dark:opacity-5" />
+//           </div>
+//           <div className="container mx-auto relative">
+//             <div className="text-center mb-12">
+//               <h2 className="section-title text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Skills & Expertise
+//               </h2>
+//               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+//                 Technologies I work with to create exceptional digital
+//                 experiences
+//               </p>
+//             </div>
+
+//             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+//               {[
+//                 {
+//                   name: "React.js",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+//                   color: "from-blue-500 to-blue-600",
+//                 },
+//                 {
+//                   name: "Next.js",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+//                   color:
+//                     "from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-400",
+//                 },
+//                 {
+//                   name: "Redux",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+//                   color: "from-purple-500 to-purple-700",
+//                 },
+//                 {
+//                   name: "JavaScript",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+//                   color: "from-yellow-400 to-yellow-600",
+//                 },
+//                 {
+//                   name: "TypeScript",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+//                   color: "from-blue-600 to-blue-800",
+//                 },
+//                 {
+//                   name: "HTML5",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+//                   color: "from-orange-500 to-orange-600",
+//                 },
+//                 {
+//                   name: "CSS3",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+//                   color: "from-blue-400 to-blue-600",
+//                 },
+//                 {
+//                   name: "Bootstrap",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+//                   color: "from-purple-400 to-purple-600",
+//                 },
+//                 {
+//                   name: "Tailwind CSS",
+//                   icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+//                   color: "from-cyan-400 to-cyan-600",
+//                 },
+//                 {
+//                   name: "Node.js",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+//                   color: "from-green-500 to-green-600",
+//                 },
+//                 {
+//                   name: "Express",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+//                   color: "from-gray-400 to-gray-600",
+//                 },
+//                 {
+//                   name: "MongoDB",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+//                   color: "from-green-400 to-green-600",
+//                 },
+//                 {
+//                   name: "RESTful APIs",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+//                   color: "from-indigo-500 to-indigo-700",
+//                 },
+//                 {
+//                   name: "Git",
+//                   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+//                   color: "from-orange-600 to-orange-700",
+//                 },
+//               ].map((skill, index) => (
+//                 <div
+//                   key={skill.name}
+//                   className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300
+//        border border-gray-200 dark:border-gray-700 hover:scale-[1.03] group overflow-hidden relative"
+//                   style={{ animationDelay: `${index * 0.05}s` }}
+//                 >
+//                   <div
+//                     className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-10 group-hover:opacity-20 transition-opacity`}
+//                   />
+//                   <div className="relative z-10 flex flex-col items-center">
+//                     <img
+//                       src={skill.icon}
+//                       alt={skill.name}
+//                       className="w-12 h-12 mb-3 object-contain"
+//                       loading="lazy"
+//                       onError={(e) => {
+//                         e.currentTarget.src =
+//                           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg";
+//                       }}
+//                     />
+//                     <p
+//                       className="text-gray-800 dark:text-gray-200 font-semibold text-center group-hover:text-blue-600 
+//             dark:group-hover:text-blue-400 transition-colors"
+//                     >
+//                       {skill.name}
+//                     </p>
+//                     <div className="mt-2 w-8 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </section>
+
+// {/* Experience Section */}
+// <section
+//   id="experience"
+//   className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
+// >
+//   <div className="container mx-auto">
+//     {/* Section Title */}
+//     <h2 className="section-title pb-8 text-center">Work Experience</h2>
+
+//     {/* Company Overview */}
+//     <div className="mt-12 text-center">
+//       <p className="text-purple-600 dark:text-purple-400 font-bold mb-2">
+//         NextPage Technologies • Feb 26, 2024 – Present
+//       </p>
+//       <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+//         Contributing to scalable web applications and enterprise-grade solutions
+//         using the MERN stack with a focus on performance and clean architecture.
+//       </p>
+//     </div>
+
+//     {/* Experience Cards */}
+//     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+//       {/* SafeFood Project */}
+//       <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+//         <div className="absolute top-0 left-0 w-2 h-full bg-red-600 dark:bg-red-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
+//        <h3 className="text-2xl font-semibold text-blue-600 dark:text-white mb-2">
+//   SafeFood Project
+// </h3>
+
+     
+//         <p className="text-gray-600 dark:text-gray-300 mb-6">
+//           Developed a comprehensive food safety reporting platform using Next.js
+//           and React.js, enabling users to report unsafe food products and access
+//           real-time updates.
+//         </p>
+//         <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
+//           <li>• Implemented SSR with Next.js for SEO optimization.</li>
+//           <li>• Built scalable backend API with Node.js & Express.js.</li>
+//           <li>• Integrated MongoDB for reports & location-based data.</li>
+//           <li>• Added WebSocket notifications for instant updates.</li>
+//         </ul>
+//       </div>
+
+//       {/* Biksouq Project */}
+//       <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+//         <div className="absolute top-0 left-0 w-2 h-full bg-blue-600 dark:bg-blue-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
+//  <h3 className="text-2xl font-semibold text-blue-600 mb-2">
+//   Biksouq Project
+// </h3>
+
+
+  
+//         <p className="text-gray-600 dark:text-gray-300 mb-6">
+//           Built and maintained Biksouq Business Directory platform, simplifying
+//           business networking and global connections.
+//         </p>
+//         <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
+//           <li>• Developed with Next.js, Node.js, Express, and MySQL.</li>
+//           <li>• Built responsive UI with Bootstrap.</li>
+//           <li>• Implemented secure authentication and search features.</li>
+//         </ul>
+//       </div>
+
+//       {/* R4 Paws Project */}
+//       <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+//         <div className="absolute top-0 left-0 w-2 h-full bg-green-600 dark:bg-green-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
+//   <h3 className="text-2xl font-semibold text-blue-600 dark:text-white mb-2">
+//   R4 Paws Project
+// </h3>
+
+       
+//         <p className="text-gray-600 dark:text-gray-300 mb-6">
+//           Developed pet care platform to connect pet owners with veterinary
+//           services, adoption centers, and product listings.
+//         </p>
+//         <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
+//           <li>• Built with React, Next.js, and Tailwind CSS.</li>
+//           <li>• Integrated veterinary service modules and adoption listings.</li>
+//           <li>• Delivered responsive design for seamless user experience.</li>
+//         </ul>
+//       </div>
+//     </div>
+//   </div>
+// </section>
+
+
+
+
+
+
+//         {/* Projects Section */}
+//         <section
+//           id="projects"
+//           className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
+//         >
+//           <div className="container mx-auto">
+//             <h2 className="section-title pb-4">Featured Projects</h2>
+//             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+//            <ProjectCard
+//   title="Biksouq"
+//   description="Biksouq Business Directory is a comprehensive platform connecting businesses globally. It simplifies networking and ensures seamless business growth."
+//   image={home}
+//   link="https://biksouq.com"
+//   tags={["Next.js", "Node.js", "MySQL", "Express", "Bootstrap"]}
+// />
+
+//             <ProjectCard
+//   title="R4 Paws"
+//   description="R4 Paws is a pet care platform that connects pet owners with veterinary services, adoption centers, and pet care products for a healthier and happier life."
+//   image={r4paws}
+//   link="https://r4paws.com"
+//   tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+// />
+
+//            <ProjectCard
+//   title="Nirmal Toys & Crafts"
+//   description="Nirmal Toys & Crafts is a creative platform showcasing handcrafted toys and artistic crafts, preserving traditional artistry while promoting online sales."
+//   image={nirmaltoys}
+//   link="https://nirmaltoycrafts.com/"
+//   tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+// />
+
+// <ProjectCard
+//   title="Appc"
+//   description="A comprehensive platform for managing applications and streamlining workflows with a user-friendly interface and responsive design."
+//   image={appc}
+//   link="https://appc.in"
+//   tags={["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]}
+// />
+
+// <ProjectCard
+//   title="Sathwik.org"
+//   description="A personal or organizational website designed to showcase projects, blogs, and updates with an interactive and modern UI."
+// image={sathwik}
+//   link="https://sathwik.org"
+//   tags={["Next.js", "React", "Tailwind CSS", "Framer Motion"]}
+// />
+
+// <ProjectCard
+//   title="Votehaq"
+//   description="Votehaq is a secure and user-friendly voting platform designed to make online elections simple, transparent, and reliable for organizations and institutions."
+// image={votehaq}
+//   link="https://votehaq.com"
+//   tags={["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"]}
+// />
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Education & Certifications */}
+//      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+//   <div className="container mx-auto">
+//     <div className="flex justify-center">
+//       <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 max-w-xl w-full">
+//         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+//           Education
+//         </h2>
+//         <div className="space-y-8 relative pl-6 border-l-2 border-blue-600 dark:border-blue-400">
+//           <div className="relative">
+//             <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
+//             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+//               BSC in Computer Science
+//             </h3>
+//             <p className="text-lg text-gray-600 dark:text-gray-300">
+//               WCCM Degree College (8.73)
+//             </p>
+//             <p className="text-blue-600 dark:text-blue-400">2017 - 2020</p>
+//           </div>
+
+//           <div className="relative">
+//             <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
+//             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+//               MPC
+//             </h3>
+//             <p className="text-lg text-gray-600 dark:text-gray-300">
+//               Sri Thriveni Junior College (7.04)
+//             </p>
+//             <p className="text-blue-600 dark:text-blue-400">2014 - 2016</p>
+//           </div>
+
+//           <div className="relative">
+//             <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
+//             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+//               Secondary School (10th)
+//             </h3>
+//             <p className="text-lg text-gray-600 dark:text-gray-300">
+//               APRS School
+//             </p>
+//             <p className="text-blue-600 dark:text-blue-400">2013 - 2014</p>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// </section>
+
+
+//         {/* Contact Section */}
+//         <section
+//           id="contact"
+//           className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900"
+//         >
+//           <div className="max-w-7xl mx-auto">
+//             <div className="text-center mb-16">
+//               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Let's Connect
+//               </h2>
+//               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+//                 Have a project in mind or want to discuss opportunities? Reach
+//                 out and I'll get back to you soon.
+//               </p>
+//             </div>
+
+//             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+//               <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-600">
+//                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4 after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-blue-500 after:rounded-full">
+//                   Contact Details
+//                 </h3>
+
+//                 <div className="space-y-6">
+//                   <div className="flex items-start gap-4 group">
+//                     <div className="p-3 bg-blue-50 dark:bg-gray-600 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-gray-500 transition-colors">
+//                       <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+//                     </div>
+//                     <div>
+//                       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+//                         Email
+//                       </h4>
+//                       <a
+//                         href="mailto:sopparir940@gmail.com"
+//                         className="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                       >
+//                         <span className="">
+//                           sopparir940@gmail.com
+//                         </span>
+//                       </a>
+//                     </div>
+//                   </div>
+//                   <div className="flex items-start gap-4 group">
+//                     <div className="p-3 bg-blue-50 dark:bg-gray-600 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-gray-500 transition-colors">
+//                       <Phone className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+//                     </div>
+//                     <div>
+//                       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+//                         Phone
+//                       </h4>
+//                       <a
+//                         href="tel:+919849819020"
+//                         className="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                       >
+//                         +91 9849819020
+//                       </a>
+//                     </div>
+//                   </div>
+
+//                   <div className="pt-6">
+//                     <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+//                       Connect socially
+//                     </h4>
+//                     <div className="flex gap-4">
+//                       <a
+//                         href="https://github.com/Ramesh984981"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
+//                         aria-label="GitHub profile"
+//                       >
+//                         <svg
+//                           className="w-5 h-5 text-gray-700 dark:text-gray-300"
+//                           fill="currentColor"
+//                           viewBox="0 0 24 24"
+//                           aria-hidden="true"
+//                         >
+//                           <path
+//                             fillRule="evenodd"
+//                             d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+//                             clipRule="evenodd"
+//                           />
+//                         </svg>
+//                       </a>
+
+//                       <a
+//                         href="https://www.linkedin.com/in/soppari-ramesh/"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
+//                         aria-label="LinkedIn profile"
+//                       >
+//                         <svg
+//                           className="w-5 h-5 text-gray-700 dark:text-gray-300"
+//                           fill="currentColor"
+//                           viewBox="0 0 24 24"
+//                           aria-hidden="true"
+//                         >
+//                           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+//                         </svg>
+//                       </a>
+
+                    
+
+//                       <a
+//                         href="https://www.instagram.com/soppari_Ramesh/"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
+//                         aria-label="Instagram profile"
+//                       >
+//                         <svg
+//                           className="w-5 h-5 text-gray-700 dark:text-gray-300"
+//                           fill="currentColor"
+//                           viewBox="0 0 24 24"
+//                           aria-hidden="true"
+//                         >
+//                           <path
+//                             fillRule="evenodd"
+//                             d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 3.807.058h.468c2.456 0 2.784-.011 3.807-.058.975-.045 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-3.807v-.468c0-2.456-.011-2.784-.058-3.807-.045-.975-.207-1.504-.344-1.857a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+//                             clipRule="evenodd"
+//                           />
+//                         </svg>
+//                       </a>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-600">
+//                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4 after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-blue-500 after:rounded-full">
+//                   Send a Message
+//                 </h3>
+//                 <ContactForm />
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
 import { useState, useEffect, useRef } from "react";
+import hero from "./assets/hero.jpeg";
 import {
   Github,
   Linkedin,
@@ -10,37 +961,33 @@ import {
   ExternalLink,
   Menu,
   X,
+  Code2,
+  Sparkles,
+  Rocket,
+  Award,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
-import ContactForm from "./components/ContactForm";
-import ProjectCard from "./components/ProjectCard";
-import aboutme from './assets/aboutme.avif';
-import { calculateExperience } from "./utils";
-import Typed from "typed.js";
-// import Resume from "./assets/Resume.pdf";
-import Ramesh from './assets/Ramesh.pdf';
-import home from "./assets/projects/home.png";
-import r4paws from "./assets/projects/r4paws.png";
-import nirmaltoys from "./assets/projects/nirmaltoys.png";
-import appc from "./assets/projects/appc.png";
-import sathwik from "./assets/projects/sathwik.png";
-import votehaq from "./assets/projects/votehaq.png";
-import aboutmeImg from "./assets/aboutme.avif";
-import images1 from "./assets/projects/images1.jpg";
-import home2 from "./assets/home2.png";
-// import portfolio from "./assets/portfolio.jpg";
-import portfolio from "./assets/portfolio.jpg";
-
-
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      
+      // ADDED: Active section detection for nav highlighting
+      const sections = ["home", "about", "skills", "experience", "projects", "contact"];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,6 +1003,7 @@ function App() {
   };
 
   const navLinks = [
+    { href: "#home", text: "Home" },
     { href: "#about", text: "About" },
     { href: "#skills", text: "Skills" },
     { href: "#experience", text: "Experience" },
@@ -64,52 +1012,178 @@ function App() {
   ];
 
   const TypingAnimation = () => {
-    const el = useRef(null);
+    const [text, setText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+    const [typingSpeed, setTypingSpeed] = useState(150);
+
+    const toRotate = [
+      "Soppari Ramesh",
+      "Frontend Developer",
+      "React.js Developer",
+      "MERN Stack Developer"
+    ];
 
     useEffect(() => {
-      const typed = new Typed(el.current, {
-        strings: [
-          "Soppari Ramesh",
-          "Frontend Developer",
-          "React.js Developer",
-          "MERN Stack",
-        ],
-        typeSpeed: 200,
-        backSpeed: 200,
-        loop: true,
-        showCursor: true,
-        cursorChar: "|",
-      });
+      let timer = setTimeout(() => {
+        handleType();
+      }, typingSpeed);
 
-      return () => {
-        typed.destroy();
-      };
-    }, []);
+      return () => clearTimeout(timer);
+    }, [text, isDeleting, loopNum]);
 
-    return <span ref={el} className="text-blue-600 dark:text-blue-400" />;
+    const handleType = () => {
+      const i = loopNum % toRotate.length;
+      const fullText = toRotate[i];
+
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 50 : 150);
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && text === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    return (
+      <span className="text-blue-600 dark:text-blue-400">
+        {text}
+        <span className="animate-pulse">|</span>
+      </span>
+    );
+  };
+
+  // ADDED: Enhanced project card component
+  const ProjectCard = ({ title, description, image, link, tags }) => (
+    <div className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={image || "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800"}
+          alt={title}
+          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
+      <div className="relative p-6">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          {title}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+          {description}
+        </p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tags?.map((tag, idx) => (
+            <span
+              key={idx}
+              className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:gap-3 transition-all font-semibold"
+        >
+          View Project <ExternalLink className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  );
+
+  // ADDED: Contact form component
+  const ContactForm = () => {
+    const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      message: "",
+    });
+    const [status, setStatus] = useState("");
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setStatus("Message sent successfully! I'll get back to you soon.");
+      setTimeout(() => setStatus(""), 3000);
+      setFormData({ name: "", email: "", message: "" });
+    };
+
+    return (
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
+            required
+          />
+        </div>
+        <div>
+          <textarea
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            rows="5"
+            className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all resize-none text-gray-900 dark:text-white"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+        >
+          Send Message
+        </button>
+        {status && (
+          <p className="text-green-600 dark:text-green-400 text-center animate-pulse">
+            {status}
+          </p>
+        )}
+      </form>
+    );
   };
 
   return (
     <div className={`${darkMode ? "dark bg-gray-900" : "bg-white"}`}>
       <div className="min-h-screen">
-        {/* Navigation */}
+        {/* ENHANCED: Navigation with active state and glassmorphism */}
         <nav
           className={`fixed w-full z-50 transition-all duration-300 ${
             scrolled
-              ? "py-2 bg-white/90 dark:bg-gray-900/90 shadow-lg backdrop-blur-sm"
+              ? "py-2 bg-white/80 dark:bg-gray-900/80 shadow-lg backdrop-blur-md"
               : "py-4 bg-transparent"
           }`}
         >
-          <div className="container mx-auto">
+          <div className="container mx-auto px-4">
             <div className="flex justify-between items-center">
               <a
-                href="#"
-                className="text-3xl font-bold text-blue-600 dark:text-black-400 hover:scale-105 transition-transform font-logo"
+                href="#home"
+                className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform"
               >
-                 Soppari Ramesh
+                Soppari Ramesh
               </a>
 
-              {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
                 className="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -121,17 +1195,26 @@ function App() {
                 )}
               </button>
 
-              {/* Desktop Navigation */}
               <div className="hidden lg:flex items-center space-x-8">
                 {navLinks.map((link) => (
-                  <a key={link.href} href={link.href} className="nav-link">
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`relative text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium ${
+                      activeSection === link.href.substring(1)
+                        ? "text-blue-600 dark:text-blue-400"
+                        : ""
+                    }`}
+                  >
                     {link.text}
+                    {activeSection === link.href.substring(1) && (
+                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400" />
+                    )}
                   </a>
                 ))}
                 <a
-                  href={Ramesh} // Replace with your actual resume path
-                  download="Ramesh.pdf"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  href="#contact"
+                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg"
                 >
                   Download Resume
                 </a>
@@ -150,7 +1233,7 @@ function App() {
 
             {/* Mobile Navigation */}
             <div
-              className={`lg:hidden absolute left-0 right-0 bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ease-in-out ${
+              className={`lg:hidden absolute left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg transition-all duration-300 ease-in-out ${
                 isMenuOpen ? "max-h-96 py-4" : "max-h-0 overflow-hidden"
               }`}
             >
@@ -166,9 +1249,8 @@ function App() {
                   </a>
                 ))}
                 <a
-                  href={Ramesh}
-                  download="Ramesh_Soppari_Resume.p"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-center"
+                  href="#contact"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 transition-colors text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Download Resume
@@ -192,49 +1274,44 @@ function App() {
           </div>
         </nav>
 
-        {/* Hero Section */}
-        {/* <section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+        {/* ENHANCED: Hero Section with animated gradient background */}
+        <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          {/* Animated gradient background */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
-            <img
-              // src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=2070"
-              src={portfolio}
-              alt="Background"
-              className="w-full h-full object-cover"
-            />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-pink-600/30 dark:from-blue-900/50 dark:to-purple-900/50 animate-gradient" />
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yIDItNCAyLTRzMiAyIDIgNGMwIDItMiA0LTIgNHMtMi0yLTItNHptLTYgMGMwLTIgMi00IDItNHMyIDIgMiA0YzAgMi0yIDQtMiA0cy0yLTItMi00em0xMiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6bS02LTZjMC0yIDItNCAyLTRzMiAyIDIgNGMwIDItMiA0LTIgNHMtMi0yLTItNHptNiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6bS0xMiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
           </div>
-          <div className="container relative z-10">
-            <div className="max-w-3xl mx-auto backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl animate-float">
-<h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-6 animate-slide-up">
-  Hi, I'm
-  <br />
- <span className="text-black">
-    <TypingAnimation />
-  </span>
-</h1>
-              <h2
-                className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6 animate-slide-up"
-                style={{ animationDelay: "0.2s" }}
-              >
+
+          <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+            {/* Left Side: Text + Social Links */}
+            <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-900/30 p-8 rounded-2xl shadow-2xl border border-white/20 dark:border-gray-700/50">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 dark:bg-blue-400/20 rounded-full mb-6">
+                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  Available for freelance
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Hi, I'm <br />
+                <TypingAnimation />
+              </h1>
+
+              <h2 className="text-2xl sm:text-3xl text-gray-700 dark:text-gray-200 mb-6 font-semibold">
                 Frontend Developer - ReactJS
               </h2>
-              <p
-                className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 animate-slide-up"
-                style={{ animationDelay: "0.4s" }}
-              >
-                Passionate frontend developer crafting beautiful and performant
-                web experiences
+
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Passionate Frontend Developer crafting beautiful and performant web experiences.
+                ⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, MySQL, and Git.
               </p>
-              <div
-                className="flex space-x-4 animate-slide-up"
-                style={{ animationDelay: "0.6s" }}
-              >
+
+              <div className="flex space-x-4">
                 <a
                   href="https://github.com/Ramesh984981"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
-                           dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 shadow-lg"
                 >
                   <Github className="w-6 h-6" />
                 </a>
@@ -242,8 +1319,7 @@ function App() {
                   href="https://www.linkedin.com/in/soppari-ramesh/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
-                           dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
+                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 shadow-lg"
                 >
                   <Linkedin className="w-6 h-6" />
                 </a>
@@ -251,355 +1327,139 @@ function App() {
                   href="https://wa.me/9849819020"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 
-             dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110"
+                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110 shadow-lg"
                 >
-                  <FaWhatsapp className="w-6 h-6" />
+                  <Phone className="w-6 h-6" />
                 </a>
               </div>
             </div>
+
+            {/* Right Side: Profile Image with floating animation */}
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
+              <div className="relative w-full h-full rounded-full border-8 border-white/30 dark:border-gray-700/50 shadow-2xl overflow-hidden animate-float">
+                {/* <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                  alt="Profile"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                /> */}
+ <img src={hero} alt="Profile" width={800} />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/20 dark:bg-blue-400/20 rounded-full blur-2xl" />
+            </div>
           </div>
-        </section> */}
+        </section>
 
-
-<section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
-  {/* Background Section */}
-  <div className="absolute inset-0 z-0">
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30" />
-    <img
-      src={portfolio}
-      alt="Background"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* Content Section */}
-  <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
-    {/* Left Side: Text + Social Links */}
-    <div className="backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-8 rounded-2xl shadow-xl">
-      {/* Heading */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-slide-up">
-        Hi, I'm <br />
-        <span className="text-black dark:text-white">
-          <TypingAnimation />
-        </span>
-      </h1>
-
-      {/* Subheading */}
-      <h2
-        className="text-2xl sm:text-3xl text-gray-800 dark:text-gray-200 mb-6 animate-slide-up"
-        style={{ animationDelay: "0.2s" }}
-      >
-        Frontend Developer - ReactJS
-      </h2>
-
-      {/* Short Description */}
-      <p
-        className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 animate-slide-up"
-        style={{ animationDelay: "0.4s" }}
-      >
-     Passionate Frontend Developer crafting beautiful and performant web experiences.
-⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, MySQL, and Git, along with other modern technologies.
-      </p>
-
-      {/* Social Links */}
-      <div
-        className="flex space-x-4 animate-slide-up"
-        style={{ animationDelay: "0.6s" }}
-      >
-        <a
-          href="https://github.com/Ramesh984981"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
-          dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
-        >
-          <Github className="w-6 h-6" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/soppari-ramesh/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 
-          dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
-        >
-          <Linkedin className="w-6 h-6" />
-        </a>
-        <a
-          href="https://wa.me/9849819020"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 
-          dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110"
-        >
-          <FaWhatsapp className="w-6 h-6" />
-        </a>
-      </div>
-    </div>
-
-    {/* Right Side: Profile Image */}
-    <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto animate-float">
-      <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-gray-600 shadow-2xl overflow-hidden">
-        <img
-          src={images1}
-          alt="Profile"
-          className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
-        />
-      </div>
-    </div>
-  </div>
-
-  {/* Animations */}
-  <style jsx>{`
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-slide-up {
-      opacity: 0;
-      animation: slideUp 0.8s ease forwards;
-    }
-  `}</style>
-</section>
-
-
-
-
-
-
-        {/* About Section */}
-          <section
-          id="about"
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
-        >
+        {/* ENHANCED: About Section with stat cards */}
+        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
           <div className="container mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                 <img
-                  //src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072"
-                  src={aboutmeImg}
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
                   alt="Developer working"
-                  className="rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-                <div
-                  className="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-600/10 dark:bg-blue-400/10 rounded-2xl -z-10 
-                      transition-transform duration-300 group-hover:scale-[1.1]"
+                  className="relative rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </div>
+
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white relative mb-8 pb-4">
-                  About Me
-                  <span className="absolute bottom-0 left-0 w-16 h-1 bg-blue-600 dark:bg-blue-400"></span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-6">
+                  <Code2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    About Me
+                  </span>
+                </div>
+
+                <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                  Building Digital Experiences
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                  I'm a passionate Frontend Developer with{" "}
-                  {calculateExperience()} of experience specializing in{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">
-                    React.js
-                  </span>
-                  ,{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">
-                    Next.js
-                  </span>
-                  , and modern JavaScript ecosystems.
+
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  I'm a passionate Frontend Developer with 1+ years of experience specializing in{" "}
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">React.js</span>,{" "}
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">Next.js</span>, and modern JavaScript ecosystems.
                 </p>
 
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
-                    Technical Skills
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      React.js
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      Next.js
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      Redux
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      TypeScript
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      JavaScript
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      HTML5
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      CSS3
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      Tailwind CSS
-                    </span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium transition-all hover:bg-blue-200 dark:hover:bg-blue-800 hover:scale-105">
-                      Git
-                    </span>
+                {/* ADDED: Quick stats */}
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">1+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Years Exp.</div>
+                  </div>
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">10+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Projects</div>
+                  </div>
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">100%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Satisfaction</div>
                   </div>
                 </div>
 
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                  I've successfully delivered projects ranging from dynamic
-                  single-page applications to complex enterprise dashboards,
-                  leveraging state management with{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">
-                    Redux
-                  </span>{" "}
-                  and server-side rendering with{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">
-                    Next.js
-                  </span>
-                  .
-                </p>
-
-                <p className="text-lg text-gray-600 dark:text-gray-300">
-                  Committed to continuous learning, I stay current with industry
-                  trends to implement cutting-edge solutions.
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["React.js", "Next.js", "Redux", "TypeScript", "Tailwind CSS", "Node.js"].map(
+                    (skill) => (
+                      <span
+                        key={skill}
+                        className="px-4 py-2 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium border border-blue-600/20 dark:border-blue-400/20 hover:scale-105 transition-transform"
+                      >
+                        {skill}
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section
-          id="skills"
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] dark:opacity-5" />
-          </div>
-          <div className="container mx-auto relative">
-            <div className="text-center mb-12">
-              <h2 className="section-title text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {/* ENHANCED: Skills Section with hover effects */}
+        <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+          <div className="container mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+                <Rocket className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  My Toolkit
+                </span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Skills & Expertise
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Technologies I work with to create exceptional digital
-                experiences
+                Technologies I work with to create exceptional digital experiences
               </p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
               {[
-                {
-                  name: "React.js",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-                  color: "from-blue-500 to-blue-600",
-                },
-                {
-                  name: "Next.js",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-                  color:
-                    "from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-400",
-                },
-                {
-                  name: "Redux",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
-                  color: "from-purple-500 to-purple-700",
-                },
-                {
-                  name: "JavaScript",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-                  color: "from-yellow-400 to-yellow-600",
-                },
-                {
-                  name: "TypeScript",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-                  color: "from-blue-600 to-blue-800",
-                },
-                {
-                  name: "HTML5",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-                  color: "from-orange-500 to-orange-600",
-                },
-                {
-                  name: "CSS3",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-                  color: "from-blue-400 to-blue-600",
-                },
-                {
-                  name: "Bootstrap",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-                  color: "from-purple-400 to-purple-600",
-                },
-                {
-                  name: "Tailwind CSS",
-                  icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-                  color: "from-cyan-400 to-cyan-600",
-                },
-                {
-                  name: "Node.js",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-                  color: "from-green-500 to-green-600",
-                },
-                {
-                  name: "Express",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-                  color: "from-gray-400 to-gray-600",
-                },
-                {
-                  name: "MongoDB",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-                  color: "from-green-400 to-green-600",
-                },
-                {
-                  name: "RESTful APIs",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
-                  color: "from-indigo-500 to-indigo-700",
-                },
-                {
-                  name: "Git",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-                  color: "from-orange-600 to-orange-700",
-                },
+                { name: "React.js", icon: "⚛️", color: "from-blue-500 to-blue-600" },
+                { name: "Next.js", icon: "▲", color: "from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-400" },
+                { name: "Redux", icon: "🔄", color: "from-purple-500 to-purple-700" },
+                { name: "JavaScript", icon: "🟨", color: "from-yellow-400 to-yellow-600" },
+                { name: "TypeScript", icon: "📘", color: "from-blue-600 to-blue-800" },
+                { name: "HTML5", icon: "🌐", color: "from-orange-500 to-orange-600" },
+                { name: "CSS3", icon: "🎨", color: "from-blue-400 to-blue-600" },
+                { name: "Tailwind CSS", icon: "💨", color: "from-cyan-400 to-cyan-600" },
+                { name: "Node.js", icon: "🟩", color: "from-green-500 to-green-600" },
+                { name: "Express", icon: "🚂", color: "from-gray-400 to-gray-600" },
+                { name: "MongoDB", icon: "🍃", color: "from-green-400 to-green-600" },
+                { name: "Git", icon: "📦", color: "from-orange-600 to-orange-700" },
               ].map((skill, index) => (
                 <div
                   key={skill.name}
-                  className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300
-       border border-gray-200 dark:border-gray-700 hover:scale-[1.03] group overflow-hidden relative"
+                  className="group p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:scale-105 hover:-rotate-1 overflow-hidden relative"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-10 group-hover:opacity-20 transition-opacity`}
-                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
                   <div className="relative z-10 flex flex-col items-center">
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-12 h-12 mb-3 object-contain"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg";
-                      }}
-                    />
-                    <p
-                      className="text-gray-800 dark:text-gray-200 font-semibold text-center group-hover:text-blue-600 
-            dark:group-hover:text-blue-400 transition-colors"
-                    >
+                    <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
+                      {skill.icon}
+                    </div>
+                    <p className="text-gray-800 dark:text-gray-200 font-semibold text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {skill.name}
                     </p>
-                    <div className="mt-2 w-8 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </div>
               ))}
@@ -607,324 +1467,375 @@ function App() {
           </div>
         </section>
 
-{/* Experience Section */}
-<section
-  id="experience"
-  className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"
->
-  <div className="container mx-auto">
-    {/* Section Title */}
-    <h2 className="section-title pb-8 text-center">Work Experience</h2>
-
-    {/* Company Overview */}
-    <div className="mt-12 text-center">
-      <p className="text-purple-600 dark:text-purple-400 font-bold mb-2">
-        NextPage Technologies • Feb 26, 2024 – Present
-      </p>
-      <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-        Contributing to scalable web applications and enterprise-grade solutions
-        using the MERN stack with a focus on performance and clean architecture.
-      </p>
-    </div>
-
-    {/* Experience Cards */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
-      {/* SafeFood Project */}
-      <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-        <div className="absolute top-0 left-0 w-2 h-full bg-red-600 dark:bg-red-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
-       <h3 className="text-2xl font-semibold text-blue-600 dark:text-white mb-2">
-  SafeFood Project
-</h3>
-
-     
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
-          Developed a comprehensive food safety reporting platform using Next.js
-          and React.js, enabling users to report unsafe food products and access
-          real-time updates.
-        </p>
-        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
-          <li>• Implemented SSR with Next.js for SEO optimization.</li>
-          <li>• Built scalable backend API with Node.js & Express.js.</li>
-          <li>• Integrated MongoDB for reports & location-based data.</li>
-          <li>• Added WebSocket notifications for instant updates.</li>
-        </ul>
-      </div>
-
-      {/* Biksouq Project */}
-      <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-        <div className="absolute top-0 left-0 w-2 h-full bg-blue-600 dark:bg-blue-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
- <h3 className="text-2xl font-semibold text-blue-600 mb-2">
-  Biksouq Project
-</h3>
-
-
-  
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
-          Built and maintained Biksouq Business Directory platform, simplifying
-          business networking and global connections.
-        </p>
-        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
-          <li>• Developed with Next.js, Node.js, Express, and MySQL.</li>
-          <li>• Built responsive UI with Bootstrap.</li>
-          <li>• Implemented secure authentication and search features.</li>
-        </ul>
-      </div>
-
-      {/* R4 Paws Project */}
-      <div className="relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-        <div className="absolute top-0 left-0 w-2 h-full bg-green-600 dark:bg-green-400 rounded-l-2xl group-hover:h-1/2 group-hover:top-1/4 transition-all duration-500" />
-  <h3 className="text-2xl font-semibold text-blue-600 dark:text-white mb-2">
-  R4 Paws Project
-</h3>
-
-       
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
-          Developed pet care platform to connect pet owners with veterinary
-          services, adoption centers, and product listings.
-        </p>
-        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mt-4">
-          <li>• Built with React, Next.js, and Tailwind CSS.</li>
-          <li>• Integrated veterinary service modules and adoption listings.</li>
-          <li>• Delivered responsive design for seamless user experience.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-        {/* Projects Section */}
-        <section
-          id="projects"
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
-        >
+        {/* ENHANCED: Experience Section with timeline */}
+        <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
           <div className="container mx-auto">
-            <h2 className="section-title pb-4">Featured Projects</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-           <ProjectCard
-  title="Biksouq"
-  description="Biksouq Business Directory is a comprehensive platform connecting businesses globally. It simplifies networking and ensures seamless business growth."
-  image={home}
-  link="https://biksouq.com"
-  tags={["Next.js", "Node.js", "MySQL", "Express", "Bootstrap"]}
-/>
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+                <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  Career Journey
+                </span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Work Experience
+              </h2>
+            </div>
 
-            <ProjectCard
-  title="R4 Paws"
-  description="R4 Paws is a pet care platform that connects pet owners with veterinary services, adoption centers, and pet care products for a healthier and happier life."
-  image={r4paws}
-  link="https://r4paws.com"
-  tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
-/>
+            <div className="max-w-4xl mx-auto mb-12">
+              <div className="text-center p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl text-white">
+                <h3 className="text-2xl font-bold mb-2">NextPage Technologies</h3>
+                <p className="text-blue-100 mb-1">Frontend Developer</p>
+                <p className="text-sm text-blue-200">Feb 26, 2024 – Present</p>
+              </div>
+            </div>
 
-           <ProjectCard
-  title="Nirmal Toys & Crafts"
-  description="Nirmal Toys & Crafts is a creative platform showcasing handcrafted toys and artistic crafts, preserving traditional artistry while promoting online sales."
-  image={nirmaltoys}
-  link="https://nirmaltoycrafts.com/"
-  tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
-/>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {/* SafeFood Project */}
+              <div className="relative p-8 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-red-200 dark:border-red-800">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-red-600 dark:bg-red-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                  1
+                </div>
+                <h3 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-3 group-hover:scale-105 transition-transform">
+                  SafeFood Project
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  Developed a comprehensive food safety reporting platform using Next.js and React.js, enabling users to report unsafe food products and access real-time updates.
+                </p>
+                <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+                    <span>Implemented SSR with Next.js for SEO optimization</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+                    <span>Built scalable backend API with Node.js & Express.js</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+                    <span>Integrated MongoDB for reports & location-based data</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+                    <span>Added WebSocket notifications for instant updates</span>
+                  </li>
+                </ul>
+              </div>
 
-<ProjectCard
-  title="Appc"
-  description="A comprehensive platform for managing applications and streamlining workflows with a user-friendly interface and responsive design."
-  image={appc}
-  link="https://appc.in"
-  tags={["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]}
-/>
+              {/* Biksouq Project */}
+              <div className="relative p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-blue-200 dark:border-blue-800">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                  2
+                </div>
+                <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
+                  Biksouq Project
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  Built and maintained Biksouq Business Directory platform, simplifying business networking and global connections.
+                </p>
+                <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span>Developed with Next.js, Node.js, Express, and MySQL</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span>Built responsive UI with Bootstrap</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span>Implemented secure authentication and search features</span>
+                  </li>
+                </ul>
+              </div>
 
-<ProjectCard
-  title="Sathwik.org"
-  description="A personal or organizational website designed to showcase projects, blogs, and updates with an interactive and modern UI."
-image={sathwik}
-  link="https://sathwik.org"
-  tags={["Next.js", "React", "Tailwind CSS", "Framer Motion"]}
-/>
-
-<ProjectCard
-  title="Votehaq"
-  description="Votehaq is a secure and user-friendly voting platform designed to make online elections simple, transparent, and reliable for organizations and institutions."
-image={votehaq}
-  link="https://votehaq.com"
-  tags={["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"]}
-/>
+              {/* R4 Paws Project */}
+              <div className="relative p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-green-200 dark:border-green-800">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-green-600 dark:bg-green-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                  3
+                </div>
+                <h3 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-3 group-hover:scale-105 transition-transform">
+                  R4 Paws Project
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  Developed pet care platform to connect pet owners with veterinary services, adoption centers, and product listings.
+                </p>
+                <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+                    <span>Built with React, Next.js, and Tailwind CSS</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+                    <span>Integrated veterinary service modules and adoption listings</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+                    <span>Delivered responsive design for seamless user experience</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Education & Certifications */}
-     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-  <div className="container mx-auto">
-    <div className="flex justify-center">
-      <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 max-w-xl w-full">
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-          Education
-        </h2>
-        <div className="space-y-8 relative pl-6 border-l-2 border-blue-600 dark:border-blue-400">
-          <div className="relative">
-            <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-              BSC in Computer Science
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              WCCM Degree College (8.73)
-            </p>
-            <p className="text-blue-600 dark:text-blue-400">2017 - 2020</p>
+        {/* ENHANCED: Projects Section with better cards */}
+        <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+          <div className="container mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+                <Code2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  Portfolio
+                </span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Featured Projects
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Showcasing my best work and creative solutions
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ProjectCard
+                title="Biksouq"
+                description="Biksouq Business Directory is a comprehensive platform connecting businesses globally. It simplifies networking and ensures seamless business growth."
+                image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                link="https://biksouq.com"
+                tags={["Next.js", "Node.js", "MySQL", "Express", "Bootstrap"]}
+              />
+
+              <ProjectCard
+                title="R4 Paws"
+                description="R4 Paws is a pet care platform that connects pet owners with veterinary services, adoption centers, and pet care products for a healthier and happier life."
+                image="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=800"
+                link="https://r4paws.com"
+                tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+              />
+
+              <ProjectCard
+                title="Nirmal Toys & Crafts"
+                description="Nirmal Toys & Crafts is a creative platform showcasing handcrafted toys and artistic crafts, preserving traditional artistry while promoting online sales."
+                image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800"
+                link="https://nirmaltoycrafts.com/"
+                tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+              />
+
+              <ProjectCard
+                title="Appc"
+                description="A comprehensive platform for managing applications and streamlining workflows with a user-friendly interface and responsive design."
+                image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                link="https://appc.in"
+                tags={["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]}
+              />
+
+              <ProjectCard
+                title="Sathwik.org"
+                description="A personal or organizational website designed to showcase projects, blogs, and updates with an interactive and modern UI."
+                image="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80&w=800"
+                link="https://sathwik.org"
+                tags={["Next.js", "React", "Tailwind CSS", "Framer Motion"]}
+              />
+
+              <ProjectCard
+                title="Votehaq"
+                description="Votehaq is a secure and user-friendly voting platform designed to make online elections simple, transparent, and reliable for organizations and institutions."
+                image="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&q=80&w=800"
+                link="https://votehaq.com"
+                tags={["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"]}
+              />
+            </div>
           </div>
+        </section>
 
-          <div className="relative">
-            <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-              MPC
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Sri Thriveni Junior College (7.04)
-            </p>
-            <p className="text-blue-600 dark:text-blue-400">2014 - 2016</p>
+        {/* ENHANCED: Education Section with visual timeline */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+          <div className="container mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+                <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  Academic Background
+                </span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Education
+              </h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-600 via-purple-600 to-pink-600 rounded-full" />
+
+                {/* Education items */}
+                <div className="space-y-12">
+                  {/* BSC */}
+                  <div className="relative flex items-center">
+                    <div className="w-1/2 pr-8 text-right">
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-2xl shadow-lg border-2 border-blue-200 dark:border-blue-800 hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                          BSC Computer Science
+                        </h3>
+                        <p className="text-lg text-gray-700 dark:text-gray-300 mb-1">
+                          WCCM Degree College
+                        </p>
+                        <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                          CGPA: 8.73
+                        </p>
+                      </div>
+                    </div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
+                    <div className="w-1/2 pl-8">
+                      <div className="bg-blue-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
+                        2017 - 2020
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Intermediate */}
+                  <div className="relative flex items-center">
+                    <div className="w-1/2 pr-8 text-right">
+                      <div className="bg-purple-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
+                        2014 - 2016
+                      </div>
+                    </div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
+                    <div className="w-1/2 pl-8">
+                      <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-2xl shadow-lg border-2 border-purple-200 dark:border-purple-800 hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                          MPC (Intermediate)
+                        </h3>
+                        <p className="text-lg text-gray-700 dark:text-gray-300 mb-1">
+                          Sri Thriveni Junior College
+                        </p>
+                        <p className="text-purple-600 dark:text-purple-400 font-semibold">
+                          CGPA: 7.04
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 10th */}
+                  <div className="relative flex items-center">
+                    <div className="w-1/2 pr-8 text-right">
+                      <div className="bg-gradient-to-r from-pink-50 to-red-50 dark:from-pink-900/20 dark:to-red-900/20 p-6 rounded-2xl shadow-lg border-2 border-pink-200 dark:border-pink-800 hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                          Secondary School (10th)
+                        </h3>
+                        <p className="text-lg text-gray-700 dark:text-gray-300">
+                          APRS School
+                        </p>
+                      </div>
+                    </div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-pink-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
+                    <div className="w-1/2 pl-8">
+                      <div className="bg-pink-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
+                        2013 - 2014
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="relative">
-            <div className="absolute w-4 h-4 rounded-full -left-[9px] top-0" />
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-              Secondary School (10th)
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              APRS School
-            </p>
-            <p className="text-blue-600 dark:text-blue-400">2013 - 2014</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-        {/* Contact Section */}
-        <section
-          id="contact"
-          className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900"
-        >
+        {/* ENHANCED: Contact Section with improved design */}
+        <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+                <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  Get In Touch
+                </span>
+              </div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Let's Connect
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Have a project in mind or want to discuss opportunities? Reach
-                out and I'll get back to you soon.
+                Have a project in mind or want to discuss opportunities? Reach out and I'll get back to you soon.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-600">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4 after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-blue-500 after:rounded-full">
+              <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 dark:border-gray-600">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4">
                   Contact Details
+                  <span className="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
                 </h3>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3 bg-blue-50 dark:bg-gray-600 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-gray-500 transition-colors">
+                    <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl group-hover:scale-110 transition-transform shadow-lg">
                       <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
                         Email
                       </h4>
                       <a
-                        href="mailto:sopparir940@gmail.com"
-                        className="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        href="mailto:rameshsoppari8@gmail.com"
+                        className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
-                        <span className="">
-                          sopparir940@gmail.com
-                        </span>
+                        rameshsoppari8@gmail.com
                       </a>
                     </div>
                   </div>
+
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3 bg-blue-50 dark:bg-gray-600 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-gray-500 transition-colors">
-                      <Phone className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl group-hover:scale-110 transition-transform shadow-lg">
+                      <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
                         Phone
                       </h4>
                       <a
                         href="tel:+919849819020"
-                        className="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                       >
                         +91 9849819020
                       </a>
                     </div>
                   </div>
 
-                  <div className="pt-6">
+                  <div className="pt-6 border-t border-gray-200 dark:border-gray-600">
                     <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                      Connect socially
+                      Connect Socially
                     </h4>
                     <div className="flex gap-4">
                       <a
                         href="https://github.com/Ramesh984981"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
+                        className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all hover:scale-110 shadow-lg"
                         aria-label="GitHub profile"
                       >
-                        <svg
-                          className="w-5 h-5 text-gray-700 dark:text-gray-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                       </a>
 
                       <a
                         href="https://www.linkedin.com/in/soppari-ramesh/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
+                        className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all hover:scale-110 shadow-lg"
                         aria-label="LinkedIn profile"
                       >
-                        <svg
-                          className="w-5 h-5 text-gray-700 dark:text-gray-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
+                        <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                       </a>
-
-                    
 
                       <a
                         href="https://www.instagram.com/soppari_Ramesh/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-500 transition-colors"
+                        className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-pink-100 dark:hover:bg-pink-900/30 transition-all hover:scale-110 shadow-lg"
                         aria-label="Instagram profile"
                       >
-                        <svg
-                          className="w-5 h-5 text-gray-700 dark:text-gray-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 3.807.058h.468c2.456 0 2.784-.011 3.807-.058.975-.045 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-3.807v-.468c0-2.456-.011-2.784-.058-3.807-.045-.975-.207-1.504-.344-1.857a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                            clipRule="evenodd"
-                          />
+                        <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                       </a>
                     </div>
@@ -932,16 +1843,89 @@ image={votehaq}
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-600">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4 after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-blue-500 after:rounded-full">
+              <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 dark:border-gray-600">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4">
                   Send a Message
+                  <span className="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
                 </h3>
                 <ContactForm />
               </div>
             </div>
           </div>
         </section>
+
+        {/* ADDED: Footer */}
+        <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  Soppari Ramesh
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Frontend Developer | React.js Specialist
+                </p>
+              </div>
+              <div className="flex gap-6">
+                {navLinks.slice(0, 5).map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-600 dark:text-gray-400">
+              <p>© 2026 Soppari Ramesh. All rights reserved. Built with React & Tailwind CSS</p>
+            </div>
+          </div>
+        </footer>
       </div>
+
+      {/* ADDED: Custom CSS for animations */}
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 15s ease infinite;
+        }
+
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+      `}</style>
     </div>
   );
 }
