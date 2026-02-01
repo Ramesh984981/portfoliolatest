@@ -966,6 +966,7 @@ import {
   Rocket,
   Award,
 } from "lucide-react";
+import Ramesh from './assets/Ramesh.pdf';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -1212,11 +1213,12 @@ function App() {
                     )}
                   </a>
                 ))}
-                <a
-                  href="#contact"
-                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg"
-                >
-                  Download Resume
+                             <a
+                   href={Ramesh} // Replace with your actual resume path
+                   download="Ramesh.pdf"
+                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                 >
+                   Download Resume
                 </a>
                 <button
                   onClick={toggleDarkMode}
@@ -1248,13 +1250,13 @@ function App() {
                     {link.text}
                   </a>
                 ))}
-                <a
-                  href="#contact"
-                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 transition-colors text-center"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Download Resume
-                </a>
+                              <a
+                  href={Ramesh} // Replace with your actual resume path
+                   download="Ramesh.pdf"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                 >
+                   Download Resume
+                 </a>
                 <button
                   onClick={toggleDarkMode}
                   className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
