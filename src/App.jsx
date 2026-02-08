@@ -1276,6 +1276,7 @@ function App() {
           </div>
         </nav>
 
+
         {/* ENHANCED: Hero Section with animated gradient background */}
         <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
           {/* Animated gradient background */}
