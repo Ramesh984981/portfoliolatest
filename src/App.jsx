@@ -1379,7 +1379,7 @@ function App() {
                 </h2>
 
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  I'm a passionate Frontend Developer with 1+ years of experience specializing in{" "}
+                  I'm a passionate Frontend Developer with 2+ years of experience specializing in{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">React.js</span>,{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">Next.js</span>, and modern JavaScript ecosystems.
                 </p>
@@ -1387,7 +1387,7 @@ function App() {
                 {/* ADDED: Quick stats */}
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">1+</div>
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">2+</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">Years Exp.</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
