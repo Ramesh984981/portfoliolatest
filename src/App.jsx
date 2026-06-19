@@ -966,7 +966,7 @@ import {
   Rocket,
   Award,
 } from "lucide-react";
-import Ramesh from './assets/Ramesh.pdf';
+import Ramesh from './assets/Ramesh_Resume.pdf';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -1215,7 +1215,7 @@ function App() {
                 ))}
                              <a
                    href={Ramesh} // Replace with your actual resume path
-                   download="Ramesh.pdf"
+                   download="Ramesh_Resume.pdf"
                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                  >
                    Download Resume
@@ -1252,7 +1252,7 @@ function App() {
                 ))}
                               <a
                   href={Ramesh} // Replace with your actual resume path
-                   download="Ramesh.pdf"
+                   download="Ramesh_Resume.pdf"
                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                  >
                    Download Resume
