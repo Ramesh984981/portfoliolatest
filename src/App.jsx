@@ -1303,11 +1303,10 @@ function App() {
               <h2 className="text-2xl sm:text-3xl text-gray-700 dark:text-gray-200 mb-6 font-semibold">
                 Frontend Developer - ReactJS
               </h2>
-
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Passionate Frontend Developer crafting beautiful and performant web experiences.
-                ⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, MySQL, and Git.
-              </p>
+<p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+  Passionate Frontend Developer crafting beautiful and performant web experiences.
+  ⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, Express.js, WordPress, MySQL, MongoDB, PostgreSQL, and Git.
+</p>
 
               <div className="flex space-x-4">
                 <a
@@ -1379,7 +1378,7 @@ function App() {
                 </h2>
 
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  I'm a passionate Frontend Developer with 2+ years of experience specializing in{" "}
+                  I'm a passionate Frontend Developer with 2.5+ years of experience specializing in{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">React.js</span>,{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">Next.js</span>, and modern JavaScript ecosystems.
                 </p>
@@ -1387,7 +1386,7 @@ function App() {
                 {/* ADDED: Quick stats */}
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">2+</div>
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">2.5+</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">Years Exp.</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
@@ -1489,7 +1488,7 @@ function App() {
               <div className="text-center p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl text-white">
                 <h3 className="text-2xl font-bold mb-2">NextPage Technologies</h3>
                 <p className="text-blue-100 mb-1">Frontend Developer</p>
-                <p className="text-sm text-blue-200">Feb 26, 2024 – Present</p>
+                <p className="text-sm text-blue-200">jan 26, 2024 – Present</p>
               </div>
             </div>
 
@@ -1522,40 +1521,27 @@ function App() {
                     <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
                     <span>Added WebSocket notifications for instant updates</span>
                   </li>
+                    <li className="flex items-start gap-2">
+    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+    <span>
+      Website:
+      <a
+        href="https://safefood.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="ml-1 text-red-600 dark:text-red-400 hover:underline"
+      >
+        safefood.com
+      </a>
+    </span>
+  </li>
                 </ul>
               </div>
 
-              {/* Biksouq Project */}
-              <div className="relative p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-blue-200 dark:border-blue-800">
-                <div className="absolute top-4 right-4 w-12 h-12 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                  2
-                </div>
-                <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
-                  Biksouq Project
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Built and maintained Biksouq Business Directory platform, simplifying business networking and global connections.
-                </p>
-                <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                    <span>Developed with Next.js, Node.js, Express, and MySQL</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                    <span>Built responsive UI with Bootstrap</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                    <span>Implemented secure authentication and search features</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* R4 Paws Project */}
-              <div className="relative p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-green-200 dark:border-green-800">
+               {/*R4paws  Project */}
+             <div className="relative p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-green-200 dark:border-green-800">
                 <div className="absolute top-4 right-4 w-12 h-12 bg-green-600 dark:bg-green-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                  3
+                  2
                 </div>
                 <h3 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-3 group-hover:scale-105 transition-transform">
                   R4 Paws Project
@@ -1576,8 +1562,69 @@ function App() {
                     <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
                     <span>Delivered responsive design for seamless user experience</span>
                   </li>
+                    <li className="flex items-start gap-2">
+    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+    <span>
+      Website:
+      <a
+        href="https://r4paws.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="ml-1 text-green-600 dark:text-green-400 hover:underline"
+      >
+        r4paws.com
+      </a>
+    </span>
+  </li>
                 </ul>
               </div>
+
+              {/*Ekalavya Foundation  Project */}
+            <div className="relative p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-blue-200 dark:border-blue-800">
+  <div className="absolute top-4 right-4 w-12 h-12 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+    3
+  </div>
+
+  <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
+    Ekalavya Foundation 
+  </h3>
+
+  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+    Developed and maintained the Ekalavya Foundation website using WordPress, focusing on responsive design, performance, and user experience.
+  </p>
+
+  <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+    <li className="flex items-start gap-2">
+      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+      <span>Built and customized pages using WordPress CMS</span>
+    </li>
+
+    <li className="flex items-start gap-2">
+      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+      <span>Implemented responsive layouts and optimized website performance</span>
+    </li>
+
+    <li className="flex items-start gap-2">
+      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+      <span>Managed content updates, plugins, and website maintenance</span>
+    </li>
+
+    <li className="flex items-start gap-2">
+      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+      <span>
+        Website:
+        <a
+          href="https://ekalavyafoundation.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-1 text-blue-600 hover:underline"
+        >
+          ekalavyafoundation.org
+        </a>
+      </span>
+    </li>
+  </ul>
+</div>
             </div>
           </div>
         </section>
@@ -1601,13 +1648,13 @@ function App() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <ProjectCard
-                title="Biksouq"
-                description="Biksouq Business Directory is a comprehensive platform connecting businesses globally. It simplifies networking and ensures seamless business growth."
-                image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
-                link="https://biksouq.com"
-                tags={["Next.js", "Node.js", "MySQL", "Express", "Bootstrap"]}
-              />
+             <ProjectCard
+  title="SafeFood"
+  description="SafeFood is a food safety reporting platform that enables users to report unsafe food products, track complaints, and receive real-time updates on food safety issues."
+  image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800"
+  link="https://safefood.com"
+  tags={["Next.js", "React.js", "Node.js", "Express.js", "MongoDB"]}
+/>
 
               <ProjectCard
                 title="R4 Paws"
@@ -1617,13 +1664,13 @@ function App() {
                 tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
               />
 
-              <ProjectCard
-                title="Nirmal Toys & Crafts"
-                description="Nirmal Toys & Crafts is a creative platform showcasing handcrafted toys and artistic crafts, preserving traditional artistry while promoting online sales."
-                image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800"
-                link="https://nirmaltoycrafts.com/"
-                tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
-              />
+          <ProjectCard
+  title="Ekalavya Foundation"
+  description="Developed and maintained the Ekalavya Foundation website using WordPress, focusing on responsive design, performance optimization, content management, and user experience."
+  image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800"
+  link="https://ekalavyafoundation.org/"
+  tags={["WordPress", "PHP", "HTML", "CSS", "JavaScript"]}
+/>
 
               <ProjectCard
                 title="Appc"
