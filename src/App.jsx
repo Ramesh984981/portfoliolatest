@@ -1378,7 +1378,7 @@ function App() {
                 </h2>
 
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  I'm a passionate Frontend Developer with 2.5+ years of experience specializing in{" "}
+                  I'm a passionate Frontend Developer with 3 years of experience specializing in{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">React.js</span>,{" "}
                   <span className="font-semibold text-blue-600 dark:text-blue-400">Next.js</span>, and modern JavaScript ecosystems.
                 </p>
@@ -1386,7 +1386,7 @@ function App() {
                 {/* ADDED: Quick stats */}
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">2.5+</div>
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">3+</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">Years Exp.</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
@@ -1488,7 +1488,7 @@ function App() {
               <div className="text-center p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl text-white">
                 <h3 className="text-2xl font-bold mb-2">NextPage Technologies</h3>
                 <p className="text-blue-100 mb-1">Frontend Developer</p>
-                <p className="text-sm text-blue-200">jan 26, 2024 – Present</p>
+                <p className="text-sm text-blue-200">july22, 2023 – Present</p>
               </div>
             </div>
 
