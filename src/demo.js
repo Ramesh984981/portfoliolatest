@@ -13,6 +13,7 @@
       maskImage:
         "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
     }}
+    
   />
      {/* Your Content/Components */}
 </div>
