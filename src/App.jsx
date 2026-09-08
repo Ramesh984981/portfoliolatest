@@ -949,1035 +949,1810 @@
 // export default App;
 
 
-import { useState, useEffect, useRef } from "react";
+// import { useState, useEffect, useRef } from "react";
+// import hero from "./assets/hero.jpeg";
+// import {
+//   Github,
+//   Linkedin,
+//   Mail,
+//   Phone,
+//   Moon,
+//   Sun,
+//   ExternalLink,
+//   Menu,
+//   X,
+//   Code2,
+//   Sparkles,
+//   Rocket,
+//   Award,
+// } from "lucide-react";
+// import Ramesh from './assets/Ramesh_Resumes.pdf';
+
+// function App() {
+//   const [darkMode, setDarkMode] = useState(true);
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [activeSection, setActiveSection] = useState("home");
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setScrolled(window.scrollY > 20);
+      
+//       // ADDED: Active section detection for nav highlighting
+//       const sections = ["home", "about", "skills", "experience", "projects", "contact"];
+//       const current = sections.find(section => {
+//         const element = document.getElementById(section);
+//         if (element) {
+//           const rect = element.getBoundingClientRect();
+//           return rect.top <= 100 && rect.bottom >= 100;
+//         }
+//         return false;
+//       });
+//       if (current) setActiveSection(current);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   const toggleDarkMode = () => {
+//     setDarkMode(!darkMode);
+//   };
+
+//   const toggleMenu = () => {
+//     setIsMenuOpen(!isMenuOpen);
+//   };
+
+//   const navLinks = [
+//     { href: "#home", text: "Home" },
+//     { href: "#about", text: "About" },
+//     { href: "#skills", text: "Skills" },
+//     { href: "#experience", text: "Experience" },
+//     { href: "#projects", text: "Projects" },
+//     { href: "#contact", text: "Contact" },
+//   ];
+
+//   const TypingAnimation = () => {
+//     const [text, setText] = useState("");
+//     const [isDeleting, setIsDeleting] = useState(false);
+//     const [loopNum, setLoopNum] = useState(0);
+//     const [typingSpeed, setTypingSpeed] = useState(150);
+
+//     const toRotate = [
+//       "Soppari Ramesh",
+//       "Frontend Developer",
+//       "React.js Developer",
+//       "MERN Stack Developer"
+//     ];
+
+//     useEffect(() => {
+//       let timer = setTimeout(() => {
+//         handleType();
+//       }, typingSpeed);
+
+//       return () => clearTimeout(timer);
+//     }, [text, isDeleting, loopNum]);
+
+//     const handleType = () => {
+//       const i = loopNum % toRotate.length;
+//       const fullText = toRotate[i];
+
+//       setText(
+//         isDeleting
+//           ? fullText.substring(0, text.length - 1)
+//           : fullText.substring(0, text.length + 1)
+//       );
+
+//       setTypingSpeed(isDeleting ? 50 : 150);
+
+//       if (!isDeleting && text === fullText) {
+//         setTimeout(() => setIsDeleting(true), 2000);
+//       } else if (isDeleting && text === "") {
+//         setIsDeleting(false);
+//         setLoopNum(loopNum + 1);
+//       }
+//     };
+
+//     return (
+//       <span className="text-blue-600 dark:text-blue-400">
+//         {text}
+//         <span className="animate-pulse">|</span>
+//       </span>
+//     );
+//   };
+
+//   // ADDED: Enhanced project card component
+//   const ProjectCard = ({ title, description, image, link, tags }) => (
+//     <div className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+//       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+//       <div className="relative h-64 overflow-hidden">
+//         <img
+//           src={image || "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800"}
+//           alt={title}
+//           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+//         />
+//         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+//       </div>
+//       <div className="relative p-6">
+//         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+//           {title}
+//         </h3>
+//         <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+//           {description}
+//         </p>
+//         <div className="flex flex-wrap gap-2 mb-4">
+//           {tags?.map((tag, idx) => (
+//             <span
+//               key={idx}
+//               className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium"
+//             >
+//               {tag}
+//             </span>
+//           ))}
+//         </div>
+//         <a
+//           href={link}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:gap-3 transition-all font-semibold"
+//         >
+//           View Project <ExternalLink className="w-4 h-4" />
+//         </a>
+//       </div>
+//     </div>
+//   );
+
+//   // ADDED: Contact form component
+//   const ContactForm = () => {
+//     const [formData, setFormData] = useState({
+//       name: "",
+//       email: "",
+//       message: "",
+//     });
+//     const [status, setStatus] = useState("");
+
+//     const handleSubmit = (e) => {
+//       e.preventDefault();
+//       setStatus("Message sent successfully! I'll get back to you soon.");
+//       setTimeout(() => setStatus(""), 3000);
+//       setFormData({ name: "", email: "", message: "" });
+//     };
+
+//     return (
+//       <form onSubmit={handleSubmit} className="space-y-6">
+//         <div>
+//           <input
+//             type="text"
+//             placeholder="Your Name"
+//             value={formData.name}
+//             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+//             className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
+//             required
+//           />
+//         </div>
+//         <div>
+//           <input
+//             type="email"
+//             placeholder="Your Email"
+//             value={formData.email}
+//             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+//             className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
+//             required
+//           />
+//         </div>
+//         <div>
+//           <textarea
+//             placeholder="Your Message"
+//             value={formData.message}
+//             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+//             rows="5"
+//             className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all resize-none text-gray-900 dark:text-white"
+//             required
+//           />
+//         </div>
+//         <button
+//           type="submit"
+//           className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+//         >
+//           Send Message
+//         </button>
+//         {status && (
+//           <p className="text-green-600 dark:text-green-400 text-center animate-pulse">
+//             {status}
+//           </p>
+//         )}
+//       </form>
+//     );
+//   };
+
+//   return (
+//     <div className={`${darkMode ? "dark bg-gray-900" : "bg-white"}`}>
+//       <div className="min-h-screen">
+//         {/* ENHANCED: Navigation with active state and glassmorphism */}
+//         <nav
+//           className={`fixed w-full z-50 transition-all duration-300 ${
+//             scrolled
+//               ? "py-2 bg-white/80 dark:bg-gray-900/80 shadow-lg backdrop-blur-md"
+//               : "py-4 bg-transparent"
+//           }`}
+//         >
+//           <div className="container mx-auto px-4">
+//             <div className="flex justify-between items-center">
+//               <a
+//                 href="#home"
+//                 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform"
+//               >
+//                 Soppari Ramesh
+//               </a>
+
+//               <button
+//                 onClick={toggleMenu}
+//                 className="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//               >
+//                 {isMenuOpen ? (
+//                   <X className="w-6 h-6" />
+//                 ) : (
+//                   <Menu className="w-6 h-6" />
+//                 )}
+//               </button>
+
+//               <div className="hidden lg:flex items-center space-x-8">
+//                 {navLinks.map((link) => (
+//                   <a
+//                     key={link.href}
+//                     href={link.href}
+//                     className={`relative text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium ${
+//                       activeSection === link.href.substring(1)
+//                         ? "text-blue-600 dark:text-blue-400"
+//                         : ""
+//                     }`}
+//                   >
+//                     {link.text}
+//                     {activeSection === link.href.substring(1) && (
+//                       <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400" />
+//                     )}
+//                   </a>
+//                 ))}
+//                              <a
+//                    href={Ramesh} // Replace with your actual resume path
+//                    download="Ramesh_Resumes.pdf"
+//                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+//                  >
+//                    Download Resume
+//                 </a>
+//                 <button
+//                   onClick={toggleDarkMode}
+//                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                 >
+//                   {darkMode ? (
+//                     <Sun className="w-5 h-5 text-white" />
+//                   ) : (
+//                     <Moon className="w-5 h-5" />
+//                   )}
+//                 </button>
+//               </div>
+//             </div>
+
+//             {/* Mobile Navigation */}
+//             <div
+//               className={`lg:hidden absolute left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg transition-all duration-300 ease-in-out ${
+//                 isMenuOpen ? "max-h-96 py-4" : "max-h-0 overflow-hidden"
+//               }`}
+//             >
+//               <div className="flex flex-col space-y-4 px-6">
+//                 {navLinks.map((link) => (
+//                   <a
+//                     key={link.href}
+//                     href={link.href}
+//                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                     onClick={() => setIsMenuOpen(false)}
+//                   >
+//                     {link.text}
+//                   </a>
+//                 ))}
+//                               <a
+//                   href={Ramesh} // Replace with your actual resume path
+//                    download="Ramesh_Resumes.pdf"
+//                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+//                  >
+//                    Download Resume
+//                  </a>
+//                 <button
+//                   onClick={toggleDarkMode}
+//                   className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                 >
+//                   {darkMode ? (
+//                     <>
+//                       <Sun className="w-5 h-5" /> Light Mode
+//                     </>
+//                   ) : (
+//                     <>
+//                       <Moon className="w-5 h-5" /> Dark Mode
+//                     </>
+//                   )}
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </nav>
+
+
+//         {/* ENHANCED: Hero Section with animated gradient background */}
+//         <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+//           {/* Animated gradient background */}
+//           <div className="absolute inset-0 z-0">
+//             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-pink-600/30 dark:from-blue-900/50 dark:to-purple-900/50 animate-gradient" />
+//             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yIDItNCAyLTRzMiAyIDIgNGMwIDItMiA0LTIgNHMtMi0yLTItNHptLTYgMGMwLTIgMi00IDItNHMyIDIgMiA0YzAgMi0yIDQtMiA0cy0yLTItMi00em0xMiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6bS02LTZjMC0yIDItNCAyLTRzMiAyIDIgNGMwIDItMiA0LTIgNHMtMi0yLTItNHptNiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6bS0xMiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
+//           </div>
+
+//           <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+//             {/* Left Side: Text + Social Links */}
+//             <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-900/30 p-8 rounded-2xl shadow-2xl border border-white/20 dark:border-gray-700/50">
+//               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 dark:bg-blue-400/20 rounded-full mb-6">
+//                 <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                   Available for freelance
+//                 </span>
+//               </div>
+
+//               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+//                 Hi, I'm <br />
+//                 <TypingAnimation />
+//               </h1>
+
+//               <h2 className="text-2xl sm:text-3xl text-gray-700 dark:text-gray-200 mb-6 font-semibold">
+//                 Frontend Developer - ReactJS
+//               </h2>
+// <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+//   Passionate Frontend Developer crafting beautiful and performant web experiences.
+//   ⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, Express.js, WordPress, MySQL, MongoDB, PostgreSQL, and Git.
+// </p>
+
+//               <div className="flex space-x-4">
+//                 <a
+//                   href="https://github.com/Ramesh984981"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 shadow-lg"
+//                 >
+//                   <Github className="w-6 h-6" />
+//                 </a>
+//                 <a
+//                   href="https://www.linkedin.com/in/soppari-ramesh/"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 shadow-lg"
+//                 >
+//                   <Linkedin className="w-6 h-6" />
+//                 </a>
+//                 <a
+//                   href="https://wa.me/9849819020"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110 shadow-lg"
+//                 >
+//                   <Phone className="w-6 h-6" />
+//                 </a>
+//               </div>
+//             </div>
+
+//             {/* Right Side: Profile Image with floating animation */}
+//             <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto">
+//               <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
+//               <div className="relative w-full h-full rounded-full border-8 border-white/30 dark:border-gray-700/50 shadow-2xl overflow-hidden animate-float">
+//                 {/* <img
+//                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+//                   alt="Profile"
+//                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+//                 /> */}
+//  <img src={hero} alt="Profile" width={800} />
+//               </div>
+//               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/20 dark:bg-blue-400/20 rounded-full blur-2xl" />
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ENHANCED: About Section with stat cards */}
+//         <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+//           <div className="container mx-auto">
+//             <div className="grid md:grid-cols-2 gap-12 items-center">
+//               <div className="relative group">
+//                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+//                 <img
+//                   src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
+//                   alt="Developer working"
+//                   className="relative rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
+//                 />
+//               </div>
+
+//               <div>
+//                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-6">
+//                   <Code2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                   <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                     About Me
+//                   </span>
+//                 </div>
+
+//                 <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+//                   Building Digital Experiences
+//                 </h2>
+
+//                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+//                   I'm a passionate Frontend Developer with 3 years of experience specializing in{" "}
+//                   <span className="font-semibold text-blue-600 dark:text-blue-400">React.js</span>,{" "}
+//                   <span className="font-semibold text-blue-600 dark:text-blue-400">Next.js</span>, and modern JavaScript ecosystems.
+//                 </p>
+
+//                 {/* ADDED: Quick stats */}
+//                 <div className="grid grid-cols-3 gap-4 mb-8">
+//                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+//                     <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">3+</div>
+//                     <div className="text-sm text-gray-600 dark:text-gray-300">Years Exp.</div>
+//                   </div>
+//                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+//                     <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">10+</div>
+//                     <div className="text-sm text-gray-600 dark:text-gray-300">Projects</div>
+//                   </div>
+//                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+//                     <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">100%</div>
+//                     <div className="text-sm text-gray-600 dark:text-gray-300">Satisfaction</div>
+//                   </div>
+//                 </div>
+
+//                 <div className="flex flex-wrap gap-2">
+//                   {["React.js", "Next.js", "Redux", "TypeScript", "Tailwind CSS", "Node.js"].map(
+//                     (skill) => (
+//                       <span
+//                         key={skill}
+//                         className="px-4 py-2 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium border border-blue-600/20 dark:border-blue-400/20 hover:scale-105 transition-transform"
+//                       >
+//                         {skill}
+//                       </span>
+//                     )
+//                   )}
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ENHANCED: Skills Section with hover effects */}
+//         <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+//           <div className="container mx-auto">
+//             <div className="text-center mb-16">
+//               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+//                 <Rocket className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                   My Toolkit
+//                 </span>
+//               </div>
+//               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Skills & Expertise
+//               </h2>
+//               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+//                 Technologies I work with to create exceptional digital experiences
+//               </p>
+//             </div>
+
+//             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+//               {[
+//                 { name: "React.js", icon: "⚛️", color: "from-blue-500 to-blue-600" },
+//                 { name: "Next.js", icon: "▲", color: "from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-400" },
+//                 { name: "Redux", icon: "🔄", color: "from-purple-500 to-purple-700" },
+//                 { name: "JavaScript", icon: "🟨", color: "from-yellow-400 to-yellow-600" },
+//                 { name: "TypeScript", icon: "📘", color: "from-blue-600 to-blue-800" },
+//                 { name: "HTML5", icon: "🌐", color: "from-orange-500 to-orange-600" },
+//                 { name: "CSS3", icon: "🎨", color: "from-blue-400 to-blue-600" },
+//                 { name: "Tailwind CSS", icon: "💨", color: "from-cyan-400 to-cyan-600" },
+//                 { name: "Node.js", icon: "🟩", color: "from-green-500 to-green-600" },
+//                 { name: "Express", icon: "🚂", color: "from-gray-400 to-gray-600" },
+//                 { name: "MongoDB", icon: "🍃", color: "from-green-400 to-green-600" },
+//                 { name: "Git", icon: "📦", color: "from-orange-600 to-orange-700" },
+//               ].map((skill, index) => (
+//                 <div
+//                   key={skill.name}
+//                   className="group p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:scale-105 hover:-rotate-1 overflow-hidden relative"
+//                   style={{ animationDelay: `${index * 0.05}s` }}
+//                 >
+//                   <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+//                   <div className="relative z-10 flex flex-col items-center">
+//                     <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
+//                       {skill.icon}
+//                     </div>
+//                     <p className="text-gray-800 dark:text-gray-200 font-semibold text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+//                       {skill.name}
+//                     </p>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ENHANCED: Experience Section with timeline */}
+//         <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+//           <div className="container mx-auto">
+//             <div className="text-center mb-16">
+//               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+//                 <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                   Career Journey
+//                 </span>
+//               </div>
+//               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Work Experience
+//               </h2>
+//             </div>
+
+//             <div className="max-w-4xl mx-auto mb-12">
+//               <div className="text-center p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl text-white">
+//                 <h3 className="text-2xl font-bold mb-2">NextPage Technologies</h3>
+//                 <p className="text-blue-100 mb-1">Frontend Developer</p>
+//                 <p className="text-sm text-blue-200">july22, 2023 – Present</p>
+//               </div>
+//             </div>
+
+//             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+//               {/* SafeFood Project */}
+//               <div className="relative p-8 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-red-200 dark:border-red-800">
+//                 <div className="absolute top-4 right-4 w-12 h-12 bg-red-600 dark:bg-red-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+//                   1
+//                 </div>
+//                 <h3 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-3 group-hover:scale-105 transition-transform">
+//                   SafeFood Project
+//                 </h3>
+//                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+//                   Developed a comprehensive food safety reporting platform using Next.js and React.js, enabling users to report unsafe food products and access real-time updates.
+//                 </p>
+//                 <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+//                     <span>Implemented SSR with Next.js for SEO optimization</span>
+//                   </li>
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+//                     <span>Built scalable backend API with Node.js & Express.js</span>
+//                   </li>
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+//                     <span>Integrated MongoDB for reports & location-based data</span>
+//                   </li>
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+//                     <span>Added WebSocket notifications for instant updates</span>
+//                   </li>
+//                     <li className="flex items-start gap-2">
+//     <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
+//     <span>
+//       Website:
+//       <a
+//         href="https://safefood.com/"
+//         target="_blank"
+//         rel="noopener noreferrer"
+//         className="ml-1 text-red-600 dark:text-red-400 hover:underline"
+//       >
+//         safefood.com
+//       </a>
+//     </span>
+//   </li>
+//                 </ul>
+//               </div>
+
+//                {/*R4paws  Project */}
+//              <div className="relative p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-green-200 dark:border-green-800">
+//                 <div className="absolute top-4 right-4 w-12 h-12 bg-green-600 dark:bg-green-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+//                   2
+//                 </div>
+//                 <h3 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-3 group-hover:scale-105 transition-transform">
+//                   R4 Paws Project
+//                 </h3>
+//                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+//                   Developed pet care platform to connect pet owners with veterinary services, adoption centers, and product listings.
+//                 </p>
+//                 <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+//                     <span>Built with React, Next.js, and Tailwind CSS</span>
+//                   </li>
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+//                     <span>Integrated veterinary service modules and adoption listings</span>
+//                   </li>
+//                   <li className="flex items-start gap-2">
+//                     <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+//                     <span>Delivered responsive design for seamless user experience</span>
+//                   </li>
+//                     <li className="flex items-start gap-2">
+//     <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+//     <span>
+//       Website:
+//       <a
+//         href="https://r4paws.com/"
+//         target="_blank"
+//         rel="noopener noreferrer"
+//         className="ml-1 text-green-600 dark:text-green-400 hover:underline"
+//       >
+//         r4paws.com
+//       </a>
+//     </span>
+//   </li>
+//                 </ul>
+//               </div>
+
+//               {/*Ekalavya Foundation  Project */}
+//             <div className="relative p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-blue-200 dark:border-blue-800">
+//   <div className="absolute top-4 right-4 w-12 h-12 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+//     3
+//   </div>
+
+//   <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
+//     Ekalavya Foundation 
+//   </h3>
+
+//   <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+//     Developed and maintained the Ekalavya Foundation website using WordPress, focusing on responsive design, performance, and user experience.
+//   </p>
+
+//   <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+//     <li className="flex items-start gap-2">
+//       <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+//       <span>Built and customized pages using WordPress CMS</span>
+//     </li>
+
+//     <li className="flex items-start gap-2">
+//       <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+//       <span>Implemented responsive layouts and optimized website performance</span>
+//     </li>
+
+//     <li className="flex items-start gap-2">
+//       <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+//       <span>Managed content updates, plugins, and website maintenance</span>
+//     </li>
+
+//     <li className="flex items-start gap-2">
+//       <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+//       <span>
+//         Website:
+//         <a
+//           href="https://ekalavyafoundation.org/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="ml-1 text-blue-600 hover:underline"
+//         >
+//           ekalavyafoundation.org
+//         </a>
+//       </span>
+//     </li>
+//   </ul>
+// </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ENHANCED: Projects Section with better cards */}
+//         <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+//           <div className="container mx-auto">
+//             <div className="text-center mb-16">
+//               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+//                 <Code2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                   Portfolio
+//                 </span>
+//               </div>
+//               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Featured Projects
+//               </h2>
+//               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+//                 Showcasing my best work and creative solutions
+//               </p>
+//             </div>
+
+//             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+//              <ProjectCard
+//   title="SafeFood"
+//   description="SafeFood is a food safety reporting platform that enables users to report unsafe food products, track complaints, and receive real-time updates on food safety issues."
+//   image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800"
+//   link="https://safefood.com"
+//   tags={["Next.js", "React.js", "Node.js", "Express.js", "MongoDB"]}
+// />
+
+//               <ProjectCard
+//                 title="R4 Paws"
+//                 description="R4 Paws is a pet care platform that connects pet owners with veterinary services, adoption centers, and pet care products for a healthier and happier life."
+//                 image="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=800"
+//                 link="https://r4paws.com"
+//                 tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
+//               />
+
+//           <ProjectCard
+//   title="Ekalavya Foundation"
+//   description="Developed and maintained the Ekalavya Foundation website using WordPress, focusing on responsive design, performance optimization, content management, and user experience."
+//   image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800"
+//   link="https://ekalavyafoundation.org/"
+//   tags={["WordPress", "PHP", "HTML", "CSS", "JavaScript"]}
+// />
+
+//               <ProjectCard
+//                 title="Appc"
+//                 description="A comprehensive platform for managing applications and streamlining workflows with a user-friendly interface and responsive design."
+//                 image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+//                 link="https://appc.in"
+//                 tags={["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]}
+//               />
+
+//               <ProjectCard
+//                 title="Sathwik.org"
+//                 description="A personal or organizational website designed to showcase projects, blogs, and updates with an interactive and modern UI."
+//                 image="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80&w=800"
+//                 link="https://sathwik.org"
+//                 tags={["Next.js", "React", "Tailwind CSS", "Framer Motion"]}
+//               />
+
+//               <ProjectCard
+//                 title="Votehaq"
+//                 description="Votehaq is a secure and user-friendly voting platform designed to make online elections simple, transparent, and reliable for organizations and institutions."
+//                 image="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&q=80&w=800"
+//                 link="https://votehaq.com"
+//                 tags={["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"]}
+//               />
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ENHANCED: Education Section with visual timeline */}
+//         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+//           <div className="container mx-auto">
+//             <div className="text-center mb-16">
+//               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+//                 <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                   Academic Background
+//                 </span>
+//               </div>
+//               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Education
+//               </h2>
+//             </div>
+
+//             <div className="max-w-4xl mx-auto">
+//               <div className="relative">
+//                 {/* Timeline line */}
+//                 <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-600 via-purple-600 to-pink-600 rounded-full" />
+
+//                 {/* Education items */}
+//                 <div className="space-y-12">
+//                   {/* BSC */}
+//                   <div className="relative flex items-center">
+//                     <div className="w-1/2 pr-8 text-right">
+//                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-2xl shadow-lg border-2 border-blue-200 dark:border-blue-800 hover:scale-105 transition-transform">
+//                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+//                           BSC Computer Science
+//                         </h3>
+//                         <p className="text-lg text-gray-700 dark:text-gray-300 mb-1">
+//                           WCCM Degree College
+//                         </p>
+//                         <p className="text-blue-600 dark:text-blue-400 font-semibold">
+//                           CGPA: 8.73
+//                         </p>
+//                       </div>
+//                     </div>
+//                     <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
+//                     <div className="w-1/2 pl-8">
+//                       <div className="bg-blue-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
+//                         2017 - 2020
+//                       </div>
+//                     </div>
+//                   </div>
+
+//                   {/* Intermediate */}
+//                   <div className="relative flex items-center">
+//                     <div className="w-1/2 pr-8 text-right">
+//                       <div className="bg-purple-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
+//                         2014 - 2016
+//                       </div>
+//                     </div>
+//                     <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
+//                     <div className="w-1/2 pl-8">
+//                       <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-2xl shadow-lg border-2 border-purple-200 dark:border-purple-800 hover:scale-105 transition-transform">
+//                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+//                           MPC (Intermediate)
+//                         </h3>
+//                         <p className="text-lg text-gray-700 dark:text-gray-300 mb-1">
+//                           Sri Thriveni Junior College
+//                         </p>
+//                         <p className="text-purple-600 dark:text-purple-400 font-semibold">
+//                           CGPA: 7.04
+//                         </p>
+//                       </div>
+//                     </div>
+//                   </div>
+
+//                   {/* 10th */}
+//                   <div className="relative flex items-center">
+//                     <div className="w-1/2 pr-8 text-right">
+//                       <div className="bg-gradient-to-r from-pink-50 to-red-50 dark:from-pink-900/20 dark:to-red-900/20 p-6 rounded-2xl shadow-lg border-2 border-pink-200 dark:border-pink-800 hover:scale-105 transition-transform">
+//                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+//                           Secondary School (10th)
+//                         </h3>
+//                         <p className="text-lg text-gray-700 dark:text-gray-300">
+//                           APRS School
+//                         </p>
+//                       </div>
+//                     </div>
+//                     <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-pink-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
+//                     <div className="w-1/2 pl-8">
+//                       <div className="bg-pink-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
+//                         2013 - 2014
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ENHANCED: Contact Section with improved design */}
+//         <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+//           <div className="max-w-7xl mx-auto">
+//             <div className="text-center mb-16">
+//               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+//                 <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+//                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+//                   Get In Touch
+//                 </span>
+//               </div>
+//               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+//                 Let's Connect
+//               </h2>
+//               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+//                 Have a project in mind or want to discuss opportunities? Reach out and I'll get back to you soon.
+//               </p>
+//             </div>
+
+//             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+//               <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 dark:border-gray-600">
+//                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4">
+//                   Contact Details
+//                   <span className="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
+//                 </h3>
+
+//                 <div className="space-y-6">
+//                   <div className="flex items-start gap-4 group">
+//                     <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl group-hover:scale-110 transition-transform shadow-lg">
+//                       <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+//                     </div>
+//                     <div>
+//                       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
+//                         Email
+//                       </h4>
+//                       <a
+//                         href="mailto:rameshsoppari8@gmail.com"
+//                         className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                       >
+//                         rameshsoppari8@gmail.com
+//                       </a>
+//                     </div>
+//                   </div>
+
+//                   <div className="flex items-start gap-4 group">
+//                     <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl group-hover:scale-110 transition-transform shadow-lg">
+//                       <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
+//                     </div>
+//                     <div>
+//                       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
+//                         Phone
+//                       </h4>
+//                       <a
+//                         href="tel:+919849819020"
+//                         className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+//                       >
+//                         +91 9849819020
+//                       </a>
+//                     </div>
+//                   </div>
+
+//                   <div className="pt-6 border-t border-gray-200 dark:border-gray-600">
+//                     <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+//                       Connect Socially
+//                     </h4>
+//                     <div className="flex gap-4">
+//                       <a
+//                         href="https://github.com/Ramesh984981"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all hover:scale-110 shadow-lg"
+//                         aria-label="GitHub profile"
+//                       >
+//                         <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+//                       </a>
+
+//                       <a
+//                         href="https://www.linkedin.com/in/soppari-ramesh/"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all hover:scale-110 shadow-lg"
+//                         aria-label="LinkedIn profile"
+//                       >
+//                         <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+//                       </a>
+
+//                       <a
+//                         href="https://www.instagram.com/soppari_Ramesh/"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-pink-100 dark:hover:bg-pink-900/30 transition-all hover:scale-110 shadow-lg"
+//                         aria-label="Instagram profile"
+//                       >
+//                         <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+//                           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+//                         </svg>
+//                       </a>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 dark:border-gray-600">
+//                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4">
+//                   Send a Message
+//                   <span className="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
+//                 </h3>
+//                 <ContactForm />
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* ADDED: Footer */}
+//         <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4">
+//           <div className="container mx-auto">
+//             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+//               <div className="text-center md:text-left">
+//                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+//                   Soppari Ramesh
+//                 </h3>
+//              <p className="text-gray-600 dark:text-gray-400">
+//   React.js Developer | MERN Stack Developer
+// </p>
+//               </div>
+//               <div className="flex gap-6">
+//                 {navLinks.slice(0, 5).map((link) => (
+//                   <a
+//                     key={link.href}
+//                     href={link.href}
+//                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+//                   >
+//                     {link.text}
+//                   </a>
+//                 ))}
+//               </div>
+//             </div>
+//             <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-600 dark:text-gray-400">
+//               <p>© 2026 Soppari Ramesh. All rights reserved.</p>
+//             </div>
+//           </div>
+//         </footer>
+//       </div>
+
+//       {/* ADDED: Custom CSS for animations */}
+//       <style>{`
+//         @keyframes float {
+//           0%, 100% {
+//             transform: translateY(0px);
+//           }
+//           50% {
+//             transform: translateY(-20px);
+//           }
+//         }
+//         .animate-float {
+//           animation: float 6s ease-in-out infinite;
+//         }
+
+//         @keyframes gradient {
+//           0% {
+//             background-position: 0% 50%;
+//           }
+//           50% {
+//             background-position: 100% 50%;
+//           }
+//           100% {
+//             background-position: 0% 50%;
+//           }
+//         }
+//         .animate-gradient {
+//           background-size: 200% 200%;
+//           animation: gradient 15s ease infinite;
+//         }
+
+//         .line-clamp-3 {
+//           display: -webkit-box;
+//           -webkit-line-clamp: 3;
+//           -webkit-box-orient: vertical;
+//           overflow: hidden;
+//         }
+
+//         html {
+//           scroll-behavior: smooth;
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+import { useState, useEffect, useMemo } from "react";
 import hero from "./assets/hero.jpeg";
+import Ramesh from "./assets/Ramesh_Resumes.pdf";
 import {
   Github,
   Linkedin,
   Mail,
   Phone,
-  Moon,
+  MapPin,
   Sun,
-  ExternalLink,
+  Moon,
   Menu,
   X,
-  Code2,
+  ArrowUpRight,
+  Download,
+  Layers,
+  Database,
+  Server,
+  Wrench,
+  Boxes,
+  GraduationCap,
+  Briefcase,
   Sparkles,
-  Rocket,
-  Award,
 } from "lucide-react";
-import Ramesh from './assets/Ramesh_Resumes.pdf';
 
-function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+/* ---------------------------------------------------------------------- */
+/*  Data                                                                   */
+/* ---------------------------------------------------------------------- */
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      
-      // ADDED: Active section detection for nav highlighting
-      const sections = ["home", "about", "skills", "experience", "projects", "contact"];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
-    };
+const NAV_LINKS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const SKILL_GROUPS = [
+  {
+    title: "Frontend",
+    icon: Layers,
+    items: ["React.js", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
+  },
+  {
+    title: "State Management",
+    icon: Boxes,
+    items: ["Redux", "Redux Toolkit", "Context API"],
+  },
+  {
+    title: "Backend",
+    icon: Server,
+    items: ["Node.js", "Express.js", "REST APIs"],
+  },
+  {
+    title: "Databases",
+    icon: Database,
+    items: ["MongoDB", "PostgreSQL", "MySQL"],
+  },
+  {
+    title: "CMS / E-commerce",
+    icon: Sparkles,
+    items: ["WordPress", "WooCommerce"],
+  },
+  {
+    title: "Tools",
+    icon: Wrench,
+    items: ["Git", "GitHub", "npm", "Vite", "VS Code", "Vercel"],
+  },
+];
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+// Swap the `image` field for real screenshots of each site once you have
+// them (e.g. import them like `hero` above, or drop a URL in /public).
+// Using themed placeholder photos here so the cards never show an empty box.
+const PROJECTS = [
+  {
+    name: "Workstat.ai",
+    tagline: "Employee productivity & workforce management",
+    description:
+      "Responsive web applications for employee productivity, performance, attendance, time tracking, and workforce management — interactive dashboards, data-heavy views, and REST APIs behind a smooth, data-driven UI.",
+    tech: ["React.js", "JavaScript", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "REST APIs"],
+    url: "https://workstat.ai/",
+    featured: true,
+    image: "https://picsum.photos/seed/workstat-dashboard/1200/800",
+  },
+  {
+    name: "R4 Paws",
+    tagline: "Pet care & veterinary services platform",
+    description:
+      "Connects pet owners with veterinary services, adoption centers, and pet-care products through a fast, responsive interface.",
+    tech: ["Next.js", "React.js", "JavaScript", "Tailwind CSS"],
+    url: "https://r4paws.com/",
+    image: "https://picsum.photos/seed/r4paws-pets/900/700",
+  },
+  {
+    name: "Biksouq",
+    tagline: "E-commerce & marketplace platform",
+    description:
+      "Marketplace storefront built for speed and conversion, with a component-driven product catalog and responsive checkout flow.",
+    tech: ["React.js", "Next.js", "JavaScript", "Tailwind CSS"],
+    url: "https://biksouq.com/lander",
+    image: "https://picsum.photos/seed/biksouq-market/900/700",
+  },
+  {
+    name: "Ekalavya Foundation",
+    tagline: "Non-profit organization website",
+    description:
+      "Content-managed site for a non-profit foundation, focused on responsive design, performance, and easy day-to-day editing.",
+    tech: ["WordPress", "PHP", "Elementor", "GiveWP"],
+    url: "https://ekalavyafoundation.org/",
+    image: "https://picsum.photos/seed/ekalavya-foundation/900/700",
+  },
+  {
+    name: "SafeFood",
+    tagline: "Food safety e-commerce application",
+    description:
+      "Reporting and commerce platform for food safety, with real-time updates and a scalable Node.js backend.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    url: "https://safefood.com",
+    image: "https://picsum.photos/seed/safefood-app/900/700",
+  },
+];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+const SERVICES = [
+  {
+    title: "Frontend Development",
+    desc: "Building responsive, accessible React.js applications from component to production.",
+  },
+  {
+    title: "MERN Stack Development",
+    desc: "Full-stack builds across MongoDB, Express.js, React.js, and Node.js.",
+  },
+  {
+    title: "UI Development",
+    desc: "Interfaces that hold up under real content, real data, and real screen sizes.",
+  },
+  {
+    title: "API Integration",
+    desc: "Connecting REST APIs to dashboards and data-driven interfaces that stay fast.",
+  },
+];
 
-  const navLinks = [
-    { href: "#home", text: "Home" },
-    { href: "#about", text: "About" },
-    { href: "#skills", text: "Skills" },
-    { href: "#experience", text: "Experience" },
-    { href: "#projects", text: "Projects" },
-    { href: "#contact", text: "Contact" },
-  ];
+/* ---------------------------------------------------------------------- */
+/*  Small presentational helpers                                          */
+/* ---------------------------------------------------------------------- */
 
-  const TypingAnimation = () => {
-    const [text, setText] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [loopNum, setLoopNum] = useState(0);
-    const [typingSpeed, setTypingSpeed] = useState(150);
+function SectionTag({ children }) {
+  return (
+    <p className="font-mono text-[13px] text-[#0E7C86] dark:text-[#5EEAD4] mb-3 select-none">
+      <span className="opacity-50">// </span>
+      {children}
+    </p>
+  );
+}
 
-    const toRotate = [
-      "Soppari Ramesh",
-      "Frontend Developer",
-      "React.js Developer",
-      "MERN Stack Developer"
-    ];
-
-    useEffect(() => {
-      let timer = setTimeout(() => {
-        handleType();
-      }, typingSpeed);
-
-      return () => clearTimeout(timer);
-    }, [text, isDeleting, loopNum]);
-
-    const handleType = () => {
-      const i = loopNum % toRotate.length;
-      const fullText = toRotate[i];
-
-      setText(
-        isDeleting
-          ? fullText.substring(0, text.length - 1)
-          : fullText.substring(0, text.length + 1)
-      );
-
-      setTypingSpeed(isDeleting ? 50 : 150);
-
-      if (!isDeleting && text === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-      }
-    };
-
-    return (
-      <span className="text-blue-600 dark:text-blue-400">
-        {text}
-        <span className="animate-pulse">|</span>
-      </span>
-    );
-  };
-
-  // ADDED: Enhanced project card component
-  const ProjectCard = ({ title, description, image, link, tags }) => (
-    <div className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="relative h-64 overflow-hidden">
-        <img
-          src={image || "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800"}
-          alt={title}
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-      </div>
-      <div className="relative p-6">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          {title}
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-          {description}
-        </p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tags?.map((tag, idx) => (
-            <span
-              key={idx}
-              className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:gap-3 transition-all font-semibold"
-        >
-          View Project <ExternalLink className="w-4 h-4" />
-        </a>
-      </div>
+// Project thumbnail: a real image with a hover zoom and a bottom gradient
+// so the name/tagline stay legible if they're ever overlaid on the image.
+function ProjectImage({ src, alt, className = "" }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className={`relative overflow-hidden bg-black/[0.04] dark:bg-white/[0.04] ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        className={`w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
   );
+}
 
-  // ADDED: Contact form component
-  const ContactForm = () => {
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      message: "",
-    });
-    const [status, setStatus] = useState("");
+/* ---------------------------------------------------------------------- */
+/*  App                                                                    */
+/* ---------------------------------------------------------------------- */
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setStatus("Message sent successfully! I'll get back to you soon.");
-      setTimeout(() => setStatus(""), 3000);
-      setFormData({ name: "", email: "", message: "" });
+export default function App() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 16);
+      const found = NAV_LINKS.find(({ id }) => {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top <= 120 && r.bottom >= 120;
+      });
+      if (found) setActive(found.id);
     };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    return (
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
-            required
-          />
-        </div>
-        <div>
-          <textarea
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            rows="5"
-            className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all resize-none text-gray-900 dark:text-white"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          Send Message
-        </button>
-        {status && (
-          <p className="text-green-600 dark:text-green-400 text-center animate-pulse">
-            {status}
-          </p>
-        )}
-      </form>
-    );
+  const featuredProject = useMemo(() => PROJECTS.find((p) => p.featured), []);
+  const otherProjects = useMemo(() => PROJECTS.filter((p) => !p.featured), []);
+
+  const submit = (e) => {
+    e.preventDefault();
+    setSent(true);
+    setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setSent(false), 3500);
   };
 
   return (
-    <div className={`${darkMode ? "dark bg-gray-900" : "bg-white"}`}>
-      <div className="min-h-screen">
-        {/* ENHANCED: Navigation with active state and glassmorphism */}
-        <nav
-          className={`fixed w-full z-50 transition-all duration-300 ${
+    <div className={darkMode ? "dark" : ""}>
+      <div className="min-h-screen bg-[#FAF8F4] text-[#12151B] dark:bg-[#12151B] dark:text-[#F5F4F0] font-[Inter,system-ui,sans-serif] transition-colors duration-300">
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+          .font-display { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+          .font-mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+          html { scroll-behavior: smooth; }
+          @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+          }
+          :focus-visible { outline: 2px solid #0E7C86; outline-offset: 2px; }
+          .dark :focus-visible { outline-color: #5EEAD4; }
+          @keyframes rise {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .rise-1 { animation: rise 0.6s ease-out both; }
+          .rise-2 { animation: rise 0.6s ease-out 0.1s both; }
+          .rise-3 { animation: rise 0.6s ease-out 0.2s both; }
+          .rise-4 { animation: rise 0.6s ease-out 0.3s both; }
+        `}</style>
+
+        {/* ---------------- Navigation ---------------- */}
+        <header
+          className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
             scrolled
-              ? "py-2 bg-white/80 dark:bg-gray-900/80 shadow-lg backdrop-blur-md"
-              : "py-4 bg-transparent"
+              ? "bg-[#FAF8F4]/85 dark:bg-[#12151B]/85 backdrop-blur-md border-b border-black/5 dark:border-white/5"
+              : "bg-transparent"
           }`}
         >
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center">
+          <nav className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+            <a href="#home" className="font-display font-semibold text-lg tracking-tight">
+              Soppari Ramesh
+              <span className="text-[#0E7C86] dark:text-[#5EEAD4]">.</span>
+            </a>
+
+            <div className="hidden lg:flex items-center gap-1">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    active === link.id
+                      ? "text-[#0E7C86] dark:text-[#5EEAD4]"
+                      : "text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#12151B] dark:hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="hidden lg:flex items-center gap-3">
               <a
-                href="#home"
-                className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform"
+                href={Ramesh}
+                download="Ramesh_Resumes.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#12151B] text-white dark:bg-[#5EEAD4] dark:text-[#0B1211] text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                Soppari Ramesh
+                <Download className="w-4 h-4" /> Resume
               </a>
-
               <button
-                onClick={toggleMenu}
-                className="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                onClick={() => setDarkMode((d) => !d)}
+                aria-label="Toggle color theme"
+                className="p-2 rounded-md text-[#4B5566] dark:text-[#A7ADBA] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
               >
-                {isMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
+                {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
+            </div>
 
-              <div className="hidden lg:flex items-center space-x-8">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className={`relative text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium ${
-                      activeSection === link.href.substring(1)
-                        ? "text-blue-600 dark:text-blue-400"
-                        : ""
-                    }`}
-                  >
-                    {link.text}
-                    {activeSection === link.href.substring(1) && (
-                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400" />
-                    )}
-                  </a>
-                ))}
-                             <a
-                   href={Ramesh} // Replace with your actual resume path
-                   download="Ramesh_Resumes.pdf"
-                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                 >
-                   Download Resume
+            <button
+              onClick={() => setMenuOpen((m) => !m)}
+              aria-label="Toggle menu"
+              className="lg:hidden p-2 rounded-md text-[#4B5566] dark:text-[#A7ADBA]"
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </nav>
+
+          {menuOpen && (
+            <div className="lg:hidden border-t border-black/5 dark:border-white/5 bg-[#FAF8F4] dark:bg-[#12151B] px-5 py-4 space-y-1">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-2 py-2.5 rounded-md text-[15px] font-medium text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#12151B] dark:hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href={Ramesh}
+                  download="Ramesh_Resumes.pdf"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#12151B] text-white dark:bg-[#5EEAD4] dark:text-[#0B1211] text-sm font-medium"
+                >
+                  <Download className="w-4 h-4" /> Resume
                 </a>
                 <button
-                  onClick={toggleDarkMode}
-                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  onClick={() => setDarkMode((d) => !d)}
+                  className="p-2 rounded-md text-[#4B5566] dark:text-[#A7ADBA]"
+                  aria-label="Toggle color theme"
                 >
-                  {darkMode ? (
-                    <Sun className="w-5 h-5 text-white" />
-                  ) : (
-                    <Moon className="w-5 h-5" />
-                  )}
+                  {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 </button>
               </div>
             </div>
+          )}
+        </header>
 
-            {/* Mobile Navigation */}
-            <div
-              className={`lg:hidden absolute left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg transition-all duration-300 ease-in-out ${
-                isMenuOpen ? "max-h-96 py-4" : "max-h-0 overflow-hidden"
-              }`}
-            >
-              <div className="flex flex-col space-y-4 px-6">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.text}
-                  </a>
-                ))}
-                              <a
-                  href={Ramesh} // Replace with your actual resume path
-                   download="Ramesh_Resumes.pdf"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                 >
-                   Download Resume
-                 </a>
-                <button
-                  onClick={toggleDarkMode}
-                  className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  {darkMode ? (
-                    <>
-                      <Sun className="w-5 h-5" /> Light Mode
-                    </>
-                  ) : (
-                    <>
-                      <Moon className="w-5 h-5" /> Dark Mode
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-
-        {/* ENHANCED: Hero Section with animated gradient background */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-          {/* Animated gradient background */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-pink-600/30 dark:from-blue-900/50 dark:to-purple-900/50 animate-gradient" />
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yIDItNCAyLTRzMiAyIDIgNGMwIDItMiA0LTIgNHMtMi0yLTItNHptLTYgMGMwLTIgMi00IDItNHMyIDIgMiA0YzAgMi0yIDQtMiA0cy0yLTItMi00em0xMiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6bS02LTZjMC0yIDItNCAyLTRzMiAyIDIgNGMwIDItMiA0LTIgNHMtMi0yLTItNHptNiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6bS0xMiAwYzAtMiAyLTQgMi00czIgMiAyIDRjMCAyLTIgNC0yIDRzLTItMi0yLTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
-          </div>
-
-          <div className="container relative z-10 grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left Side: Text + Social Links */}
-            <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-900/30 p-8 rounded-2xl shadow-2xl border border-white/20 dark:border-gray-700/50">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 dark:bg-blue-400/20 rounded-full mb-6">
-                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  Available for freelance
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                Hi, I'm <br />
-                <TypingAnimation />
+        {/* ---------------- Hero ---------------- */}
+        <section id="home" className="max-w-6xl mx-auto px-5 sm:px-8 pt-32 pb-20 lg:pt-44 lg:pb-28">
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center">
+            <div>
+              <p className="rise-1 font-mono text-[13px] text-[#0E7C86] dark:text-[#5EEAD4] mb-5 inline-flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5EA88C] animate-pulse" />
+                Available for React.js / MERN roles
+              </p>
+              <h1 className="rise-2 font-display font-semibold text-[2.5rem] sm:text-5xl lg:text-[3.4rem] leading-[1.08] tracking-tight">
+                Soppari Ramesh builds React.js interfaces that hold up in production.
               </h1>
+              <p className="rise-3 mt-6 text-lg text-[#4B5566] dark:text-[#A7ADBA] max-w-[52ch] leading-relaxed">
+                Frontend-focused developer, 3+ years in. I build responsive, scalable, and
+                user-friendly web applications with React.js, Next.js, TypeScript, Node.js, and
+                Express.js — from first component to production dashboard.
+              </p>
 
-              <h2 className="text-2xl sm:text-3xl text-gray-700 dark:text-gray-200 mb-6 font-semibold">
-                Frontend Developer - ReactJS
-              </h2>
-<p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-  Passionate Frontend Developer crafting beautiful and performant web experiences.
-  ⚡ I build fast, dynamic, and visually stunning web applications using React.js, Next.js, Node.js, Express.js, WordPress, MySQL, MongoDB, PostgreSQL, and Git.
-</p>
+              <div className="rise-4 mt-9 flex flex-wrap items-center gap-3">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-[#0E7C86] dark:bg-[#5EEAD4] text-white dark:text-[#0B1211] font-medium hover:opacity-90 transition-opacity"
+                >
+                  View Projects <ArrowUpRight className="w-4 h-4" />
+                </a>
+                <a
+                  href={Ramesh}
+                  download="Ramesh_Resumes.pdf"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-black/15 dark:border-white/15 font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                >
+                  <Download className="w-4 h-4" /> Download Resume
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-md font-medium text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#12151B] dark:hover:text-white transition-colors"
+                >
+                  Contact Me
+                </a>
+              </div>
 
-              <div className="flex space-x-4">
+              <div className="rise-4 mt-8 flex items-center gap-4">
                 <a
                   href="https://github.com/Ramesh984981"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 shadow-lg"
+                  aria-label="GitHub"
+                  className="p-2.5 rounded-md text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#0E7C86] dark:hover:text-[#5EEAD4] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 >
-                  <Github className="w-6 h-6" />
+                  <Github className="w-5 h-5" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/soppari-ramesh/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 shadow-lg"
+                  aria-label="LinkedIn"
+                  className="p-2.5 rounded-md text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#0E7C86] dark:hover:text-[#5EEAD4] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 >
-                  <Linkedin className="w-6 h-6" />
+                  <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://wa.me/9849819020"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover:scale-110 shadow-lg"
+                  href="mailto:rameshsoppari8@gmail.com"
+                  aria-label="Email"
+                  className="p-2.5 rounded-md text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#0E7C86] dark:hover:text-[#5EEAD4] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 >
-                  <Phone className="w-6 h-6" />
+                  <Mail className="w-5 h-5" />
                 </a>
               </div>
             </div>
 
-            {/* Right Side: Profile Image with floating animation */}
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
-              <div className="relative w-full h-full rounded-full border-8 border-white/30 dark:border-gray-700/50 shadow-2xl overflow-hidden animate-float">
-                {/* <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
-                  alt="Profile"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                /> */}
- <img src={hero} alt="Profile" width={800} />
+            <div className="rise-3 relative mx-auto w-full max-w-sm">
+              <div className="absolute -inset-3 rounded-2xl border border-[#0E7C86]/25 dark:border-[#5EEAD4]/20" />
+              <div className="relative rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-xl">
+                <img src={hero} alt="Portrait of Soppari Ramesh" className="w-full h-full object-cover aspect-[4/5]" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/20 dark:bg-blue-400/20 rounded-full blur-2xl" />
-            </div>
-          </div>
-        </section>
-
-        {/* ENHANCED: About Section with stat cards */}
-        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-          <div className="container mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
-                  alt="Developer working"
-                  className="relative rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-              </div>
-
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-6">
-                  <Code2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                    About Me
-                  </span>
-                </div>
-
-                <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                  Building Digital Experiences
-                </h2>
-
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  I'm a passionate Frontend Developer with 3 years of experience specializing in{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">React.js</span>,{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">Next.js</span>, and modern JavaScript ecosystems.
-                </p>
-
-                {/* ADDED: Quick stats */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">3+</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Years Exp.</div>
-                  </div>
-                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">10+</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Projects</div>
-                  </div>
-                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">100%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Satisfaction</div>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {["React.js", "Next.js", "Redux", "TypeScript", "Tailwind CSS", "Node.js"].map(
-                    (skill) => (
-                      <span
-                        key={skill}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium border border-blue-600/20 dark:border-blue-400/20 hover:scale-105 transition-transform"
-                      >
-                        {skill}
-                      </span>
-                    )
-                  )}
-                </div>
+              <div className="absolute -bottom-5 -left-5 bg-[#FAF8F4] dark:bg-[#1A1D24] border border-black/10 dark:border-white/10 rounded-lg px-4 py-3 shadow-lg">
+                <p className="font-mono text-2xl font-semibold text-[#0E7C86] dark:text-[#5EEAD4] leading-none">3+</p>
+                <p className="text-xs text-[#4B5566] dark:text-[#A7ADBA] mt-1">years experience</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ENHANCED: Skills Section with hover effects */}
-        <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
-                <Rocket className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  My Toolkit
-                </span>
-              </div>
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Skills & Expertise
+        {/* ---------------- About ---------------- */}
+        <section id="about" className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14">
+            <div>
+              <SectionTag>about</SectionTag>
+              <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-6">
+                Three years of shipping interfaces people actually use.
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Technologies I work with to create exceptional digital experiences
+              <p className="text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed mb-4">
+                I'm a React.js / MERN stack developer working across the stack, but living mostly
+                in the frontend — component architecture, state, and the details that make an
+                interface feel fast. I've built dashboards, marketplaces, and content-managed
+                sites, and I care about the same things on every one: clean structure, real
+                performance, and code the next developer can actually read.
+              </p>
+              <p className="text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed">
+                Comfortable with React.js, Next.js, JavaScript, TypeScript, Node.js, Express.js,
+                MongoDB, PostgreSQL, MySQL, Tailwind CSS, and WordPress — and picking up whatever
+                a project actually needs.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 gap-4">
               {[
-                { name: "React.js", icon: "⚛️", color: "from-blue-500 to-blue-600" },
-                { name: "Next.js", icon: "▲", color: "from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-400" },
-                { name: "Redux", icon: "🔄", color: "from-purple-500 to-purple-700" },
-                { name: "JavaScript", icon: "🟨", color: "from-yellow-400 to-yellow-600" },
-                { name: "TypeScript", icon: "📘", color: "from-blue-600 to-blue-800" },
-                { name: "HTML5", icon: "🌐", color: "from-orange-500 to-orange-600" },
-                { name: "CSS3", icon: "🎨", color: "from-blue-400 to-blue-600" },
-                { name: "Tailwind CSS", icon: "💨", color: "from-cyan-400 to-cyan-600" },
-                { name: "Node.js", icon: "🟩", color: "from-green-500 to-green-600" },
-                { name: "Express", icon: "🚂", color: "from-gray-400 to-gray-600" },
-                { name: "MongoDB", icon: "🍃", color: "from-green-400 to-green-600" },
-                { name: "Git", icon: "📦", color: "from-orange-600 to-orange-700" },
-              ].map((skill, index) => (
+                { label: "Years experience", value: "3+" },
+                { label: "Core focus", value: "React.js" },
+                { label: "Full stack", value: "MERN" },
+                { label: "Shipped projects", value: "5+" },
+              ].map((stat) => (
                 <div
-                  key={skill.name}
-                  className="group p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:scale-105 hover:-rotate-1 overflow-hidden relative"
-                  style={{ animationDelay: `${index * 0.05}s` }}
+                  key={stat.label}
+                  className="rounded-xl border border-black/10 dark:border-white/10 p-6 bg-white/60 dark:bg-white/[0.03] hover:border-[#0E7C86]/40 dark:hover:border-[#5EEAD4]/30 transition-colors"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
-                      {skill.icon}
-                    </div>
-                    <p className="text-gray-800 dark:text-gray-200 font-semibold text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {skill.name}
-                    </p>
-                  </div>
+                  <p className="font-mono text-2xl font-semibold text-[#0E7C86] dark:text-[#5EEAD4]">{stat.value}</p>
+                  <p className="mt-2 text-sm text-[#4B5566] dark:text-[#A7ADBA]">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ENHANCED: Experience Section with timeline */}
-        <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
-                <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  Career Journey
-                </span>
-              </div>
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Work Experience
-              </h2>
-            </div>
+        {/* ---------------- Skills ---------------- */}
+        <section id="skills" className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <SectionTag>skills</SectionTag>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-10">
+            What I build with
+          </h2>
 
-            <div className="max-w-4xl mx-auto mb-12">
-              <div className="text-center p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl text-white">
-                <h3 className="text-2xl font-bold mb-2">NextPage Technologies</h3>
-                <p className="text-blue-100 mb-1">Frontend Developer</p>
-                <p className="text-sm text-blue-200">july22, 2023 – Present</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {/* SafeFood Project */}
-              <div className="relative p-8 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-red-200 dark:border-red-800">
-                <div className="absolute top-4 right-4 w-12 h-12 bg-red-600 dark:bg-red-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                  1
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SKILL_GROUPS.map((group) => {
+              const Icon = group.icon;
+              return (
+                <div
+                  key={group.title}
+                  className="rounded-xl border border-black/10 dark:border-white/10 p-6 bg-white/60 dark:bg-white/[0.03] hover:border-[#0E7C86]/40 dark:hover:border-[#5EEAD4]/30 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <Icon className="w-[18px] h-[18px] text-[#0E7C86] dark:text-[#5EEAD4]" />
+                    <h3 className="font-display font-semibold">{group.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="font-mono text-[12.5px] px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-[#4B5566] dark:text-[#C4C9D4]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-3 group-hover:scale-105 transition-transform">
-                  SafeFood Project
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Developed a comprehensive food safety reporting platform using Next.js and React.js, enabling users to report unsafe food products and access real-time updates.
-                </p>
-                <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
-                    <span>Implemented SSR with Next.js for SEO optimization</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
-                    <span>Built scalable backend API with Node.js & Express.js</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
-                    <span>Integrated MongoDB for reports & location-based data</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
-                    <span>Added WebSocket notifications for instant updates</span>
-                  </li>
-                    <li className="flex items-start gap-2">
-    <span className="text-red-600 dark:text-red-400 mt-1">✓</span>
-    <span>
-      Website:
-      <a
-        href="https://safefood.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="ml-1 text-red-600 dark:text-red-400 hover:underline"
-      >
-        safefood.com
-      </a>
-    </span>
-  </li>
-                </ul>
-              </div>
-
-               {/*R4paws  Project */}
-             <div className="relative p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-green-200 dark:border-green-800">
-                <div className="absolute top-4 right-4 w-12 h-12 bg-green-600 dark:bg-green-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                  2
-                </div>
-                <h3 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-3 group-hover:scale-105 transition-transform">
-                  R4 Paws Project
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Developed pet care platform to connect pet owners with veterinary services, adoption centers, and product listings.
-                </p>
-                <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
-                    <span>Built with React, Next.js, and Tailwind CSS</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
-                    <span>Integrated veterinary service modules and adoption listings</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
-                    <span>Delivered responsive design for seamless user experience</span>
-                  </li>
-                    <li className="flex items-start gap-2">
-    <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
-    <span>
-      Website:
-      <a
-        href="https://r4paws.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="ml-1 text-green-600 dark:text-green-400 hover:underline"
-      >
-        r4paws.com
-      </a>
-    </span>
-  </li>
-                </ul>
-              </div>
-
-              {/*Ekalavya Foundation  Project */}
-            <div className="relative p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border-2 border-blue-200 dark:border-blue-800">
-  <div className="absolute top-4 right-4 w-12 h-12 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
-    3
-  </div>
-
-  <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
-    Ekalavya Foundation 
-  </h3>
-
-  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-    Developed and maintained the Ekalavya Foundation website using WordPress, focusing on responsive design, performance, and user experience.
-  </p>
-
-  <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-    <li className="flex items-start gap-2">
-      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-      <span>Built and customized pages using WordPress CMS</span>
-    </li>
-
-    <li className="flex items-start gap-2">
-      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-      <span>Implemented responsive layouts and optimized website performance</span>
-    </li>
-
-    <li className="flex items-start gap-2">
-      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-      <span>Managed content updates, plugins, and website maintenance</span>
-    </li>
-
-    <li className="flex items-start gap-2">
-      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-      <span>
-        Website:
-        <a
-          href="https://ekalavyafoundation.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-1 text-blue-600 hover:underline"
-        >
-          ekalavyafoundation.org
-        </a>
-      </span>
-    </li>
-  </ul>
-</div>
-            </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* ENHANCED: Projects Section with better cards */}
-        <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
-                <Code2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  Portfolio
-                </span>
+        {/* ---------------- Experience ---------------- */}
+        <section id="experience" className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <SectionTag>experience</SectionTag>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-10">
+            Where I've worked
+          </h2>
+
+          <div className="relative pl-8 sm:pl-10">
+            <div className="absolute left-[7px] sm:left-[9px] top-2 bottom-2 w-px bg-black/10 dark:bg-white/10" />
+            <div className="relative">
+              <span className="absolute -left-8 sm:-left-10 top-1.5 w-4 h-4 rounded-full bg-[#0E7C86] dark:bg-[#5EEAD4] ring-4 ring-[#FAF8F4] dark:ring-[#12151B]" />
+              <div className="flex items-center gap-2 mb-1">
+                <Briefcase className="w-4 h-4 text-[#4B5566] dark:text-[#A7ADBA]" />
+                <span className="font-mono text-sm text-[#4B5566] dark:text-[#A7ADBA]">2023 — Present</span>
               </div>
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Featured Projects
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Showcasing my best work and creative solutions
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-             <ProjectCard
-  title="SafeFood"
-  description="SafeFood is a food safety reporting platform that enables users to report unsafe food products, track complaints, and receive real-time updates on food safety issues."
-  image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800"
-  link="https://safefood.com"
-  tags={["Next.js", "React.js", "Node.js", "Express.js", "MongoDB"]}
-/>
-
-              <ProjectCard
-                title="R4 Paws"
-                description="R4 Paws is a pet care platform that connects pet owners with veterinary services, adoption centers, and pet care products for a healthier and happier life."
-                image="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=800"
-                link="https://r4paws.com"
-                tags={["React", "Next.js", "Tailwind CSS", "Node.js", "Express"]}
-              />
-
-          <ProjectCard
-  title="Ekalavya Foundation"
-  description="Developed and maintained the Ekalavya Foundation website using WordPress, focusing on responsive design, performance optimization, content management, and user experience."
-  image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800"
-  link="https://ekalavyafoundation.org/"
-  tags={["WordPress", "PHP", "HTML", "CSS", "JavaScript"]}
-/>
-
-              <ProjectCard
-                title="Appc"
-                description="A comprehensive platform for managing applications and streamlining workflows with a user-friendly interface and responsive design."
-                image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-                link="https://appc.in"
-                tags={["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]}
-              />
-
-              <ProjectCard
-                title="Sathwik.org"
-                description="A personal or organizational website designed to showcase projects, blogs, and updates with an interactive and modern UI."
-                image="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80&w=800"
-                link="https://sathwik.org"
-                tags={["Next.js", "React", "Tailwind CSS", "Framer Motion"]}
-              />
-
-              <ProjectCard
-                title="Votehaq"
-                description="Votehaq is a secure and user-friendly voting platform designed to make online elections simple, transparent, and reliable for organizations and institutions."
-                image="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&q=80&w=800"
-                link="https://votehaq.com"
-                tags={["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"]}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ENHANCED: Education Section with visual timeline */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
-                <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  Academic Background
-                </span>
-              </div>
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Education
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto">
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-600 via-purple-600 to-pink-600 rounded-full" />
-
-                {/* Education items */}
-                <div className="space-y-12">
-                  {/* BSC */}
-                  <div className="relative flex items-center">
-                    <div className="w-1/2 pr-8 text-right">
-                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-2xl shadow-lg border-2 border-blue-200 dark:border-blue-800 hover:scale-105 transition-transform">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                          BSC Computer Science
-                        </h3>
-                        <p className="text-lg text-gray-700 dark:text-gray-300 mb-1">
-                          WCCM Degree College
-                        </p>
-                        <p className="text-blue-600 dark:text-blue-400 font-semibold">
-                          CGPA: 8.73
-                        </p>
-                      </div>
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-blue-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
-                        2017 - 2020
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Intermediate */}
-                  <div className="relative flex items-center">
-                    <div className="w-1/2 pr-8 text-right">
-                      <div className="bg-purple-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
-                        2014 - 2016
-                      </div>
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-2xl shadow-lg border-2 border-purple-200 dark:border-purple-800 hover:scale-105 transition-transform">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                          MPC (Intermediate)
-                        </h3>
-                        <p className="text-lg text-gray-700 dark:text-gray-300 mb-1">
-                          Sri Thriveni Junior College
-                        </p>
-                        <p className="text-purple-600 dark:text-purple-400 font-semibold">
-                          CGPA: 7.04
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 10th */}
-                  <div className="relative flex items-center">
-                    <div className="w-1/2 pr-8 text-right">
-                      <div className="bg-gradient-to-r from-pink-50 to-red-50 dark:from-pink-900/20 dark:to-red-900/20 p-6 rounded-2xl shadow-lg border-2 border-pink-200 dark:border-pink-800 hover:scale-105 transition-transform">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                          Secondary School (10th)
-                        </h3>
-                        <p className="text-lg text-gray-700 dark:text-gray-300">
-                          APRS School
-                        </p>
-                      </div>
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-pink-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10" />
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-pink-600 text-white px-4 py-2 rounded-full inline-block font-semibold shadow-lg">
-                        2013 - 2014
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ENHANCED: Contact Section with improved design */}
-        <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
-                <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  Get In Touch
-                </span>
-              </div>
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Let's Connect
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Have a project in mind or want to discuss opportunities? Reach out and I'll get back to you soon.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 dark:border-gray-600">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4">
-                  Contact Details
-                  <span className="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
-                </h3>
-
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4 group">
-                    <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl group-hover:scale-110 transition-transform shadow-lg">
-                      <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                        Email
-                      </h4>
-                      <a
-                        href="mailto:rameshsoppari8@gmail.com"
-                        className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      >
-                        rameshsoppari8@gmail.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 group">
-                    <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl group-hover:scale-110 transition-transform shadow-lg">
-                      <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                        Phone
-                      </h4>
-                      <a
-                        href="tel:+919849819020"
-                        className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                      >
-                        +91 9849819020
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="pt-6 border-t border-gray-200 dark:border-gray-600">
-                    <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                      Connect Socially
-                    </h4>
-                    <div className="flex gap-4">
-                      <a
-                        href="https://github.com/Ramesh984981"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all hover:scale-110 shadow-lg"
-                        aria-label="GitHub profile"
-                      >
-                        <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                      </a>
-
-                      <a
-                        href="https://www.linkedin.com/in/soppari-ramesh/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all hover:scale-110 shadow-lg"
-                        aria-label="LinkedIn profile"
-                      >
-                        <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                      </a>
-
-                      <a
-                        href="https://www.instagram.com/soppari_Ramesh/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-4 bg-gray-100 dark:bg-gray-600 rounded-xl hover:bg-pink-100 dark:hover:bg-pink-900/30 transition-all hover:scale-110 shadow-lg"
-                        aria-label="Instagram profile"
-                      >
-                        <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-700 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 dark:border-gray-600">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative pb-4">
-                  Send a Message
-                  <span className="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
-                </h3>
-                <ContactForm />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ADDED: Footer */}
-        <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4">
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="text-center md:text-left">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                  Soppari Ramesh
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Frontend Developer | React.js Specialist
-                </p>
-              </div>
-              <div className="flex gap-6">
-                {navLinks.slice(0, 5).map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {link.text}
-                  </a>
+              <h3 className="font-display font-semibold text-xl mb-1">React.js Developer / MernStack Developer</h3>
+              <p className="text-[#0E7C86] dark:text-[#5EEAD4] font-medium mb-4">NextPage Technologies</p>
+              <ul className="space-y-2.5 text-[#4B5566] dark:text-[#A7ADBA] max-w-2xl">
+                {[
+                  "Developed responsive web applications using React.js.",
+                  "Built reusable UI components used across multiple products.",
+                  "Integrated REST APIs into dashboards and data-driven interfaces.",
+                  "Worked with Tailwind CSS and modern frontend tooling.",
+                  "Collaborated closely with backend developers and designers.",
+                  "Worked with Node.js, Express.js, and databases when required.",
+                ].map((line) => (
+                  <li key={line} className="flex gap-3">
+                    <span className="mt-2.5 w-1 h-1 rounded-full bg-[#0E7C86] dark:bg-[#5EEAD4] shrink-0" />
+                    {line}
+                  </li>
                 ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------------- Projects ---------------- */}
+        <section id="projects" className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <SectionTag>projects</SectionTag>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-10">
+            Selected work
+          </h2>
+
+          {/* Featured project */}
+          {featuredProject && (
+            <a
+              href={featuredProject.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block mb-8 rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-white/60 dark:bg-white/[0.03] hover:border-[#E15B33]/50 transition-colors"
+            >
+              <div className="grid lg:grid-cols-[1fr_1fr] items-stretch">
+                <ProjectImage
+                  src={featuredProject.image}
+                  alt={`${featuredProject.name} preview`}
+                  className="aspect-[16/10] lg:aspect-auto lg:min-h-[320px]"
+                />
+                <div className="p-6 sm:p-8 flex flex-col justify-center">
+                  <p className="font-mono text-[13px] text-[#E15B33] mb-3">Featured project</p>
+                  <h3 className="font-display font-semibold text-2xl sm:text-3xl tracking-tight mb-2 flex items-center gap-2">
+                    {featuredProject.name}
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
+                  </h3>
+                  <p className="text-[#0E7C86] dark:text-[#5EEAD4] text-sm font-medium mb-4">{featuredProject.tagline}</p>
+                  <p className="text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed mb-5">{featuredProject.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {featuredProject.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[12px] px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-[#4B5566] dark:text-[#C4C9D4]"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </a>
+          )}
+
+          {/* Remaining projects */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherProjects.map((project) => (
+              <a
+                key={project.name}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-xl border border-black/10 dark:border-white/10 overflow-hidden bg-white/60 dark:bg-white/[0.03] hover:border-[#0E7C86]/40 dark:hover:border-[#5EEAD4]/30 hover:-translate-y-1 transition-all duration-300"
+              >
+                <ProjectImage src={project.image} alt={`${project.name} preview`} className="aspect-[16/10]" />
+                <div className="p-5">
+                  <h3 className="font-display font-semibold text-lg mb-1 flex items-center gap-1.5">
+                    {project.name}
+                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
+                  </h3>
+                  <p className="text-sm text-[#0E7C86] dark:text-[#5EEAD4] mb-3">{project.tagline}</p>
+                  <p className="text-sm text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[11px] px-2 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.06] text-[#4B5566] dark:text-[#C4C9D4]"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------------- Services ---------------- */}
+        <section className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <SectionTag>what i do</SectionTag>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-10">
+            Services
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {SERVICES.map((s) => (
+              <div
+                key={s.title}
+                className="rounded-xl border border-black/10 dark:border-white/10 p-6 bg-white/60 dark:bg-white/[0.03] hover:border-[#0E7C86]/40 dark:hover:border-[#5EEAD4]/30 transition-colors"
+              >
+                <h3 className="font-display font-semibold mb-2">{s.title}</h3>
+                <p className="text-sm text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------------- Education ---------------- */}
+        <section id="education" className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <SectionTag>education</SectionTag>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-10">
+            Academic background
+          </h2>
+
+          <div className="rounded-2xl border border-black/10 dark:border-white/10 p-8 bg-white/60 dark:bg-white/[0.03] max-w-2xl flex gap-5">
+            <div className="shrink-0 w-12 h-12 rounded-lg bg-[#0E7C86]/10 dark:bg-[#5EEAD4]/10 flex items-center justify-center">
+              <GraduationCap className="w-6 h-6 text-[#0E7C86] dark:text-[#5EEAD4]" />
+            </div>
+            <div>
+              <p className="font-mono text-sm text-[#4B5566] dark:text-[#A7ADBA] mb-1">2020</p>
+              <h3 className="font-display font-semibold text-xl mb-1">B.Sc. Computer Science</h3>
+              <p className="text-[#0E7C86] dark:text-[#5EEAD4] font-medium mb-3">Palamuru University</p>
+              <p className="text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed">
+                A strong foundation in programming, web development, databases, and software
+                engineering concepts.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------------- Contact ---------------- */}
+        <section id="contact" className="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 border-t border-black/5 dark:border-white/5">
+          <div className="grid lg:grid-cols-2 gap-14">
+            <div>
+              <SectionTag>contact</SectionTag>
+              <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight mb-5">
+                Let's build something great together.
+              </h2>
+              <p className="text-[#4B5566] dark:text-[#A7ADBA] leading-relaxed mb-8 max-w-[48ch]">
+                I'm currently open to React.js, frontend, and MERN stack opportunities. Feel free
+                to get in touch.
+              </p>
+
+              <div className="space-y-4">
+                <a href="mailto:rameshsoppari8@gmail.com" className="flex items-center gap-4 group">
+                  <span className="w-10 h-10 rounded-lg bg-[#0E7C86]/10 dark:bg-[#5EEAD4]/10 flex items-center justify-center shrink-0">
+                    <Mail className="w-[18px] h-[18px] text-[#0E7C86] dark:text-[#5EEAD4]" />
+                  </span>
+                  <span className="text-[#12151B] dark:text-white group-hover:text-[#0E7C86] dark:group-hover:text-[#5EEAD4] transition-colors">
+                    rameshsoppari8@gmail.com
+                  </span>
+                </a>
+                <a href="tel:+919849819020" className="flex items-center gap-4 group">
+                  <span className="w-10 h-10 rounded-lg bg-[#0E7C86]/10 dark:bg-[#5EEAD4]/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-[18px] h-[18px] text-[#0E7C86] dark:text-[#5EEAD4]" />
+                  </span>
+                  <span className="text-[#12151B] dark:text-white group-hover:text-[#0E7C86] dark:group-hover:text-[#5EEAD4] transition-colors">
+                    +91 98498 19020
+                  </span>
+                </a>
+                <div className="flex items-center gap-4">
+                  <span className="w-10 h-10 rounded-lg bg-[#0E7C86]/10 dark:bg-[#5EEAD4]/10 flex items-center justify-center shrink-0">
+                    <MapPin className="w-[18px] h-[18px] text-[#0E7C86] dark:text-[#5EEAD4]" />
+                  </span>
+                  <span className="text-[#12151B] dark:text-white">Hyderabad, India</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 mt-8">
+                <a
+                  href="https://github.com/Ramesh984981"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="p-2.5 rounded-md border border-black/10 dark:border-white/10 hover:border-[#0E7C86]/40 dark:hover:border-[#5EEAD4]/30 transition-colors"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/soppari-ramesh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="p-2.5 rounded-md border border-black/10 dark:border-white/10 hover:border-[#0E7C86]/40 dark:hover:border-[#5EEAD4]/30 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
               </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-600 dark:text-gray-400">
-              <p>© 2026 Soppari Ramesh. All rights reserved. Built with React & Tailwind CSS</p>
+
+            <form onSubmit={submit} className="rounded-2xl border border-black/10 dark:border-white/10 p-7 sm:p-8 bg-white/60 dark:bg-white/[0.03] space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-1.5">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-md border border-black/15 dark:border-white/15 bg-transparent outline-none focus:border-[#0E7C86] dark:focus:border-[#5EEAD4] transition-colors"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-1.5">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-md border border-black/15 dark:border-white/15 bg-transparent outline-none focus:border-[#0E7C86] dark:focus:border-[#5EEAD4] transition-colors"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-1.5">Message</label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  required
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-md border border-black/15 dark:border-white/15 bg-transparent outline-none focus:border-[#0E7C86] dark:focus:border-[#5EEAD4] transition-colors resize-none"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 rounded-md bg-[#0E7C86] dark:bg-[#5EEAD4] text-white dark:text-[#0B1211] font-medium hover:opacity-90 transition-opacity"
+              >
+                Send Message
+              </button>
+              {sent && (
+                <p className="text-sm text-[#5EA88C] text-center" role="status">
+                  Message sent — I'll get back to you soon.
+                </p>
+              )}
+            </form>
+          </div>
+        </section>
+
+        {/* ---------------- Footer ---------------- */}
+        <footer className="border-t border-black/5 dark:border-white/5">
+          <div className="max-w-6xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-[#4B5566] dark:text-[#A7ADBA]">
+              © 2026 Soppari Ramesh · Built with React.js &amp; Tailwind CSS
+            </p>
+            <div className="flex items-center gap-3">
+              <a href="https://github.com/Ramesh984981" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#0E7C86] dark:hover:text-[#5EEAD4] transition-colors">
+                <Github className="w-[18px] h-[18px]" />
+              </a>
+              <a href="https://www.linkedin.com/in/soppari-ramesh/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#0E7C86] dark:hover:text-[#5EEAD4] transition-colors">
+                <Linkedin className="w-[18px] h-[18px]" />
+              </a>
+              <a href="mailto:rameshsoppari8@gmail.com" aria-label="Email" className="text-[#4B5566] dark:text-[#A7ADBA] hover:text-[#0E7C86] dark:hover:text-[#5EEAD4] transition-colors">
+                <Mail className="w-[18px] h-[18px]" />
+              </a>
             </div>
           </div>
         </footer>
       </div>
-
-      {/* ADDED: Custom CSS for animations */}
-      <style>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 15s ease infinite;
-        }
-
-        .line-clamp-3 {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
     </div>
   );
 }
-
-export default App;
